@@ -1,6 +1,3 @@
-# Local development server (not used on Vercel)
-server.js
-
 # Build scripts & scratch files
 scripts/
 scratch/

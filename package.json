@@ -2,6 +2,7 @@
   "name": "secret-to-dream",
   "version": "1.0.0",
   "description": "Secret to Dream - Digital Product Sanctum & Member Vault with PayU Gateway",
+  "main": "server.js",
   "scripts": {
     "dev": "node server.js",
     "start": "node server.js"

@@ -39,7 +39,7 @@ function polyfillVercelResponse(res) {
   }
 }
 
-const server = http.createServer(async (req, res) => {
+async function requestHandler(req, res) {
   polyfillVercelResponse(res);
   const parsedUrl = url.parse(req.url, true);
   let pathname = parsedUrl.pathname;
@@ -124,8 +124,15 @@ const server = http.createServer(async (req, res) => {
     const stream = fs.createReadStream(filePath);
     stream.pipe(res);
   });
-});
+}
 
-server.listen(PORT, () => {
-  console.log(`Secret to Dream server running at http://localhost:${PORT}`);
-});
+const server = http.createServer(requestHandler);
+
+if (require.main === module) {
+  server.listen(PORT, () => {
+    console.log(`Secret to Dream server running at http://localhost:${PORT}`);
+  });
+}
+
+module.exports = requestHandler;
+module.exports.server = server;
