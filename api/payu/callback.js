@@ -2,6 +2,7 @@
 const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
+const { generateSanctumToken } = require('../token-utils.js');
 
 function loadEnv() {
   try {
@@ -69,7 +70,7 @@ module.exports = async (req, res) => {
 
   if (status === 'success' && isHashValid) {
     // Generate verified token
-    const token = `STD-VLT-${crypto.createHash('md5').update(txnid + salt).digest('hex').substring(0, 6).toUpperCase()}`;
+    const token = generateSanctumToken(txnid + salt);
 
     // Redirect directly to the member vault
     res.writeHead(302, {

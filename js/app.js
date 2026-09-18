@@ -536,19 +536,75 @@ function initModals() {
   }
 
   if (loginForm) {
-    loginForm.addEventListener('submit', (e) => {
+    loginForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const tokenInput = document.getElementById('login-token-input');
+      const errorContainer = document.getElementById('login-error-msg');
+      const errorText = document.getElementById('login-error-text');
+      const submitBtn = document.getElementById('login-submit-btn');
       const token = tokenInput ? tokenInput.value.trim().toUpperCase() : '';
 
-      if (token.length >= 4) {
-        localStorage.setItem('nocturne_access_token', token);
-        showToast("Authorization key verified. Decrypting sanctum...", "success");
-        setTimeout(() => {
-          window.location.href = 'vault.html';
-        }, 800);
-      } else {
-        showToast("Invalid key format. Use DEMO1130 for instant preview.", "warning");
+      if (errorContainer) errorContainer.classList.add('hidden');
+
+      if (!token) {
+        if (errorContainer && errorText) {
+          errorText.textContent = "Please enter your private access token key.";
+          errorContainer.classList.remove('hidden');
+        }
+        showToast("Please enter an access token.", "warning");
+        return;
+      }
+
+      // Show verifying loading state
+      const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `
+          <span class="material-symbols-outlined text-[18px] animate-spin">sync</span>
+          <span>VERIFYING CRYPTOGRAPHY...</span>
+        `;
+      }
+
+      try {
+        const response = await fetch('/api/validate-token', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token })
+        });
+
+        const result = await response.json();
+
+        if (result.valid) {
+          localStorage.setItem('nocturne_access_token', token);
+          showToast("Authorization key verified. Decrypting sanctum...", "success");
+          setTimeout(() => {
+            window.location.href = `/vault?token=${encodeURIComponent(token)}`;
+          }, 600);
+        } else {
+          if (errorContainer && errorText) {
+            errorText.textContent = result.error || "Access Denied: Invalid or unverified Sanctum key.";
+            errorContainer.classList.remove('hidden');
+          }
+          showToast("Access Denied: Invalid Sanctum Key.", "warning");
+          if (tokenInput) {
+            tokenInput.classList.add('border-red-500');
+            setTimeout(() => tokenInput.classList.remove('border-red-500'), 2500);
+          }
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnHtml;
+          }
+        }
+      } catch (err) {
+        if (errorContainer && errorText) {
+          errorText.textContent = "Connection error during token verification. Please try again.";
+          errorContainer.classList.remove('hidden');
+        }
+        showToast("Verification failed. Please try again.", "warning");
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnHtml;
+        }
       }
     });
   }

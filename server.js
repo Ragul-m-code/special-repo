@@ -77,7 +77,20 @@ async function requestHandler(req, res) {
     return;
   }
 
-  // 4. Static Files
+  // 4. API Route: /api/validate-token
+  if (pathname === '/api/validate-token') {
+    let body = '';
+    req.on('data', chunk => { body += chunk; });
+    req.on('end', () => {
+      req.body = body;
+      req.query = parsedUrl.query;
+      const validateHandler = require('./api/validate-token.js');
+      validateHandler(req, res);
+    });
+    return;
+  }
+
+  // 5. Static Files
   if (pathname === '/') pathname = '/index.html';
   const rawPath = pathname.replace(/^\/+/, '');
   const cleanPath = !path.extname(rawPath) ? rawPath + '.html' : rawPath;

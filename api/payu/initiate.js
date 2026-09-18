@@ -2,6 +2,7 @@
 const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
+const { generateSanctumToken } = require('../token-utils.js');
 
 function loadEnv() {
   try {
@@ -70,9 +71,8 @@ module.exports = async (req, res) => {
 
   // DEMO MODE = ON: Bypass PayU and issue instant access
   if (demoMode) {
-    const randomHex = Math.random().toString(16).substring(2, 7).toUpperCase();
-    const token = `STD-VLT-${randomHex}`;
     const txnid = `DEMO_${Date.now()}`;
+    const token = generateSanctumToken(txnid + email);
 
     return sendJson(res, 200, {
       success: true,

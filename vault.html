@@ -52,6 +52,44 @@
   <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#4c1d6b]/15 blur-[160px] pointer-events-none rounded-full -z-10"></div>
   <div class="fixed bottom-0 right-0 w-[500px] h-[500px] bg-[#d4af37]/10 blur-[160px] pointer-events-none rounded-full -z-10"></div>
 
+  <!-- VAULT ACCESS LOCK OVERLAY (Active when user does not have a verified token) -->
+  <div id="vault-lock-overlay" class="fixed inset-0 z-[100] bg-[#0e0d14]/95 backdrop-blur-2xl flex items-center justify-center p-6 hidden">
+    <div class="w-full max-w-lg bg-[#181620] border border-[#f2ca50]/40 rounded-3xl p-8 text-center relative shadow-2xl">
+      <div class="w-16 h-16 rounded-full bg-red-950/50 border border-red-500/40 text-red-400 mx-auto flex items-center justify-center mb-4">
+        <span class="material-symbols-outlined text-[32px]">lock</span>
+      </div>
+      <span class="text-[10px] font-mono tracking-[0.3em] text-red-400 uppercase font-semibold">AUTHENTICATION REQUIRED</span>
+      <h2 class="font-serif text-3xl text-white mt-1">Sanctum Locked</h2>
+      <p id="lock-reason-text" class="text-xs text-[#a69fae] mt-3 leading-relaxed">
+        This private folio and digital vault is restricted exclusively to authorized patrons who have acquired an official 256-bit encryption key.
+      </p>
+
+      <!-- Token validation input right inside lock screen -->
+      <form id="vault-unlock-form" class="mt-6 flex flex-col gap-3">
+        <div>
+          <label class="block text-[10px] font-mono uppercase tracking-widest text-[#a69fae] mb-1 text-left">Enter Your Sanctum Access Key</label>
+          <input type="text" id="vault-unlock-token" placeholder="STD-VLT-XXXX-XXXXXX" class="w-full px-4 py-3 rounded-xl bg-[#14121a] border border-[#f2ca50]/30 text-sm font-mono text-center text-[#f2ca50] placeholder-gray-600 uppercase focus:outline-none focus:border-[#f2ca50]">
+        </div>
+        <button type="submit" id="vault-unlock-btn" class="w-full py-3.5 rounded-xl btn-gold text-xs font-bold tracking-widest uppercase flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-[18px]">key</span>
+          <span>VERIFY &amp; UNLOCK VAULT</span>
+        </button>
+        <div id="vault-unlock-error" class="text-xs text-red-400 font-mono hidden mt-1"></div>
+      </form>
+
+      <div class="pt-6 mt-6 border-t border-[#f2ca50]/15 flex flex-col items-center gap-2">
+        <p class="text-xs text-[#a69fae]">Don't possess an authentic access key?</p>
+        <a href="index.html#unveil-checkout" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-[#a3cf08] to-[#80a500] text-[#14121a] font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2 shadow-lg hover:brightness-105 transition-all">
+          <span class="material-symbols-outlined text-[18px]">shopping_cart</span>
+          <span>PURCHASE PRIVATE ACCESS ($29.00)</span>
+        </a>
+        <a href="index.html" class="text-xs text-[#a69fae] hover:text-white underline mt-2">
+          &larr; Return to Folio Overview
+        </a>
+      </div>
+    </div>
+  </div>
+
   <!-- FIXED MEMBER HEADER -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-[#14121a]/90 backdrop-blur-xl border-b border-[#f2ca50]/15 shadow-[0_4px_30px_rgba(0,0,0,0.6)]">
     <div class="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-6">
@@ -444,33 +482,124 @@
     let masterAudio = new Audio();
     masterAudio.preload = 'auto';
 
+    function showVaultLock(reason) {
+      const overlay = document.getElementById('vault-lock-overlay');
+      const reasonEl = document.getElementById('lock-reason-text');
+      if (reasonEl && reason) reasonEl.textContent = reason;
+      if (overlay) overlay.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      if (masterAudio) masterAudio.pause();
+    }
+
     // Initialize Vault Page
-    document.addEventListener('DOMContentLoaded', () => {
-      // Parse query parameters passed from PayU or demo checkout
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Setup unlock form handler on lock screen
+      const unlockForm = document.getElementById('vault-unlock-form');
+      if (unlockForm) {
+        unlockForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const tokenInput = document.getElementById('vault-unlock-token');
+          const token = (tokenInput && tokenInput.value.trim().toUpperCase()) || '';
+          const errEl = document.getElementById('vault-unlock-error');
+          const btn = document.getElementById('vault-unlock-btn');
+
+          if (errEl) errEl.classList.add('hidden');
+          if (!token) {
+            if (errEl) {
+              errEl.textContent = "Please enter your access token key.";
+              errEl.classList.remove('hidden');
+            }
+            return;
+          }
+
+          if (btn) {
+            btn.disabled = true;
+            btn.textContent = "VERIFYING CRYPTOGRAPHY...";
+          }
+
+          try {
+            const res = await fetch('/api/validate-token', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ token })
+            });
+            const data = await res.json();
+            if (data.valid) {
+              localStorage.setItem('nocturne_access_token', token);
+              window.location.href = `/vault?token=${encodeURIComponent(token)}`;
+            } else {
+              if (errEl) {
+                errEl.textContent = data.error || "Access Denied: Invalid key.";
+                errEl.classList.remove('hidden');
+              }
+              if (btn) {
+                btn.disabled = false;
+                btn.innerHTML = `<span class="material-symbols-outlined text-[18px]">key</span><span>VERIFY &amp; UNLOCK VAULT</span>`;
+              }
+            }
+          } catch (err) {
+            if (errEl) {
+              errEl.textContent = "Connection error during token verification.";
+              errEl.classList.remove('hidden');
+            }
+            if (btn) {
+              btn.disabled = false;
+              btn.innerHTML = `<span class="material-symbols-outlined text-[18px]">key</span><span>VERIFY &amp; UNLOCK VAULT</span>`;
+            }
+          }
+        });
+      }
+
+      // Parse query parameters passed from PayU or checkout
       const urlParams = new URLSearchParams(window.location.search);
       const urlToken = urlParams.get('token');
       const urlName = urlParams.get('name');
       const urlEmail = urlParams.get('email');
 
-      if (urlToken) {
-        localStorage.setItem('nocturne_access_token', urlToken);
-      }
-      if (urlName) {
-        localStorage.setItem('nocturne_member_name', urlName);
-      }
-      if (urlEmail) {
-        localStorage.setItem('nocturne_member_email', urlEmail);
+      const candidateToken = (urlToken || localStorage.getItem('nocturne_access_token') || '').trim().toUpperCase();
+
+      // If no token exists at all -> immediately lock the vault
+      if (!candidateToken) {
+        showVaultLock("Authentication Required: The Sovereign Sanctum is restricted exclusively to verified patrons. Please purchase access or enter your key.");
+        return;
       }
 
-      const storedToken = urlToken || localStorage.getItem('nocturne_access_token') || 'STD-VLT-DEMO';
+      // Validate candidate token with cryptographic verification endpoint
+      try {
+        const verifyRes = await fetch('/api/validate-token', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token: candidateToken })
+        });
+        const verifyData = await verifyRes.json();
+
+        if (!verifyData.valid) {
+          localStorage.removeItem('nocturne_access_token');
+          showVaultLock(verifyData.error || "Access Denied: Invalid or unverified Sanctum key. Only genuine purchased keys grant clearance.");
+          return;
+        }
+      } catch (err) {
+        // Fallback for offline/timeout: must strictly match authentic key structure
+        if (!candidateToken.startsWith('STD-VLT-') || candidateToken.length < 12) {
+          localStorage.removeItem('nocturne_access_token');
+          showVaultLock("Access Denied: Unverified token structure. Please purchase an authentic access key.");
+          return;
+        }
+      }
+
+      // Authorization Confirmed
+      localStorage.setItem('nocturne_access_token', candidateToken);
+      if (urlName) localStorage.setItem('nocturne_member_name', urlName);
+      if (urlEmail) localStorage.setItem('nocturne_member_email', urlEmail);
+
       const keyBadge = document.getElementById('sanctum-token-badge');
       const keyDisplay = document.getElementById('display-key');
-      if (keyBadge) keyBadge.textContent = `KEY: ${storedToken}`;
-      if (keyDisplay) keyDisplay.textContent = storedToken;
+      if (keyBadge) keyBadge.textContent = `KEY: ${candidateToken}`;
+      if (keyDisplay) keyDisplay.textContent = candidateToken;
 
       if (urlToken) {
         setTimeout(() => {
-          showToast(`Access Cleared: Token ${storedToken} Verified. Welcome to the Vault.`, 'success');
+          showToast(`Access Cleared: Token ${candidateToken} Verified. Welcome to the Vault.`, 'success');
         }, 500);
       }
 
