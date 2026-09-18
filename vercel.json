@@ -2,6 +2,11 @@
   "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
+  "functions": {
+    "server.js": {
+      "includeFiles": "{js/**,audio/**,downloads/**,*.html,*.css}"
+    }
+  },
   "headers": [
     {
       "source": "/(.*)",

@@ -79,13 +79,33 @@ async function requestHandler(req, res) {
 
   // 4. Static Files
   if (pathname === '/') pathname = '/index.html';
-  const filePath = path.join(__dirname, pathname);
+  const cleanPath = pathname.replace(/^\/+/, '');
 
-  fs.stat(filePath, (err, stats) => {
-    if (err || !stats.isFile()) {
-      res.writeHead(404, { 'Content-Type': 'text/plain' });
-      return res.end('404 Not Found');
-    }
+  const candidatePaths = [
+    path.join(__dirname, cleanPath),
+    path.join(process.cwd(), cleanPath),
+    path.resolve(__dirname, cleanPath),
+    path.resolve(process.cwd(), cleanPath)
+  ];
+
+  let filePath = null;
+  let stats = null;
+
+  for (const p of candidatePaths) {
+    try {
+      const s = fs.statSync(p);
+      if (s.isFile()) {
+        filePath = p;
+        stats = s;
+        break;
+      }
+    } catch (e) {}
+  }
+
+  if (!filePath || !stats) {
+    res.writeHead(404, { 'Content-Type': 'text/plain' });
+    return res.end('404 Not Found');
+  }
 
     const ext = path.extname(filePath).toLowerCase();
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
@@ -123,7 +143,6 @@ async function requestHandler(req, res) {
 
     const stream = fs.createReadStream(filePath);
     stream.pipe(res);
-  });
 }
 
 const server = http.createServer(requestHandler);
