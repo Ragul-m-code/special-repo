@@ -446,11 +446,33 @@
 
     // Initialize Vault Page
     document.addEventListener('DOMContentLoaded', () => {
-      const storedToken = localStorage.getItem('nocturne_access_token') || 'STD-VLT-DEMO';
+      // Parse query parameters passed from PayU or demo checkout
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlToken = urlParams.get('token');
+      const urlName = urlParams.get('name');
+      const urlEmail = urlParams.get('email');
+
+      if (urlToken) {
+        localStorage.setItem('nocturne_access_token', urlToken);
+      }
+      if (urlName) {
+        localStorage.setItem('nocturne_member_name', urlName);
+      }
+      if (urlEmail) {
+        localStorage.setItem('nocturne_member_email', urlEmail);
+      }
+
+      const storedToken = urlToken || localStorage.getItem('nocturne_access_token') || 'STD-VLT-DEMO';
       const keyBadge = document.getElementById('sanctum-token-badge');
       const keyDisplay = document.getElementById('display-key');
       if (keyBadge) keyBadge.textContent = `KEY: ${storedToken}`;
       if (keyDisplay) keyDisplay.textContent = storedToken;
+
+      if (urlToken) {
+        setTimeout(() => {
+          showToast(`Access Cleared: Token ${storedToken} Verified. Welcome to the Vault.`, 'success');
+        }, 500);
+      }
 
       renderMemoList();
       loadChapter(1);

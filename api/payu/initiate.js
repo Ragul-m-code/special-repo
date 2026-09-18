@@ -83,7 +83,7 @@ module.exports = async (req, res) => {
       email: email,
       productName: productName,
       amount: amount,
-      redirectUrl: `/success.html?token=${encodeURIComponent(token)}&txnid=${encodeURIComponent(txnid)}&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&demo=1`
+      redirectUrl: `/vault?token=${encodeURIComponent(token)}&txnid=${encodeURIComponent(txnid)}&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&demo=1`
     });
   }
 

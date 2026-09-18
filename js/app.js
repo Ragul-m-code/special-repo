@@ -427,11 +427,14 @@ function initModals() {
               </div>
               <div class="w-full pt-4 flex flex-col gap-2">
                 <a href="${result.redirectUrl}" class="w-full py-3 px-4 rounded bg-[#f2ca50] text-[#14121a] font-semibold text-xs tracking-widest uppercase text-center hover:opacity-95 shadow-lg">
-                  VIEW ORDER &amp; DOWNLOAD ASSETS &rarr;
+                  ENTER PRIVATE VAULT &rarr;
                 </a>
               </div>
             </div>
           `;
+          setTimeout(() => {
+            window.location.href = result.redirectUrl;
+          }, 1400);
         }, 1200);
         return;
       }
@@ -481,11 +484,14 @@ function initModals() {
               <span>${token}</span>
             </div>
           </div>
-          <a href="success.html?token=${token}&name=${encodeURIComponent(name)}&demo=1" class="w-full py-3 px-4 rounded bg-[#f2ca50] text-[#14121a] font-semibold text-xs tracking-widest uppercase text-center">
-            GO TO SUCCESS PAGE &rarr;
+          <a href="/vault?token=${token}&name=${encodeURIComponent(name)}&demo=1" class="w-full py-3 px-4 rounded bg-[#f2ca50] text-[#14121a] font-semibold text-xs tracking-widest uppercase text-center">
+            ENTER PRIVATE VAULT &rarr;
           </a>
         </div>
       `;
+      setTimeout(() => {
+        window.location.href = `/vault?token=${token}&name=${encodeURIComponent(name)}&demo=1`;
+      }, 1400);
     }
   }
 

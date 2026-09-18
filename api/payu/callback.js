@@ -71,9 +71,9 @@ module.exports = async (req, res) => {
     // Generate verified token
     const token = `STD-VLT-${crypto.createHash('md5').update(txnid + salt).digest('hex').substring(0, 6).toUpperCase()}`;
 
-    // Redirect to post-purchase fulfillment success page
+    // Redirect directly to the member vault
     res.writeHead(302, {
-      Location: `/success.html?token=${encodeURIComponent(token)}&txnid=${encodeURIComponent(txnid)}&name=${encodeURIComponent(firstname)}&email=${encodeURIComponent(email)}`
+      Location: `/vault?token=${encodeURIComponent(token)}&txnid=${encodeURIComponent(txnid)}&name=${encodeURIComponent(firstname)}&email=${encodeURIComponent(email)}`
     });
     return res.end();
   } else {
