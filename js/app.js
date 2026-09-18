@@ -339,8 +339,6 @@ function initModals() {
   const openCheckoutBtns = document.querySelectorAll('.open-checkout-btn');
   const closeCheckoutBtns = document.querySelectorAll('.close-checkout-btn');
   const checkoutForm = document.getElementById('checkout-form');
-  const payAppleBtn = document.getElementById('pay-apple-btn');
-  const payPayuBtn = document.getElementById('pay-payu-btn');
 
   function openCheckout() {
     if (checkoutModal) {
@@ -491,12 +489,10 @@ function initModals() {
     }
   }
 
-  if (payAppleBtn) payAppleBtn.addEventListener('click', () => handleCheckoutExecution('Apple Pay'));
-  if (payPayuBtn) payPayuBtn.addEventListener('click', () => handleCheckoutExecution('PayU Portal'));
   if (checkoutForm) {
     checkoutForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      handleCheckoutExecution('Credit Card');
+      handleCheckoutExecution('PayU Portal');
     });
   }
 
