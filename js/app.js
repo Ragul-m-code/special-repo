@@ -41,8 +41,10 @@ class SoundEngine {
     this.ambientOsc2 = null;
 
     // Real HTML5 Audio Object for Landing Page Teaser
-    this.teaserAudio = new Audio('audio/teaser_01.mp3');
-    this.teaserAudio.preload = 'auto';
+    this.teaserAudio = typeof Audio !== 'undefined' ? new Audio('audio/teaser_01.mp3') : null;
+    if (this.teaserAudio) {
+      this.teaserAudio.preload = 'auto';
+    }
     this.isPlayingTeaser = false;
   }
 

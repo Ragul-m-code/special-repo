@@ -1,0 +1,15 @@
+# Local development server (not used on Vercel)
+server.js
+
+# Build scripts & scratch files
+scripts/
+scratch/
+scratch_notion/
+
+# Environment files
+.env*
+*.env
+
+# Local agent config
+.agents/
+mcp_config.json

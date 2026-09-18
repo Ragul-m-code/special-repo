@@ -2,8 +2,8 @@
   "name": "secret-to-dream",
   "version": "1.0.0",
   "description": "Secret to Dream - Digital Product Sanctum & Member Vault with PayU Gateway",
-  "main": "api/config.js",
   "scripts": {
+    "dev": "node server.js",
     "start": "node server.js"
   },
   "keywords": ["digital-product", "payu", "secret-to-dream", "vercel"],
