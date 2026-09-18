@@ -7,7 +7,15 @@
     "dev": "node server.js",
     "start": "node server.js"
   },
-  "keywords": ["digital-product", "payu", "secret-to-dream", "vercel"],
+  "keywords": [
+    "digital-product",
+    "payu",
+    "secret-to-dream",
+    "vercel"
+  ],
   "author": "Secret to Dream",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
 }
