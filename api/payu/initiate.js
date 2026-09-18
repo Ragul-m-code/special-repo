@@ -83,6 +83,8 @@ module.exports = async (req, res) => {
       email: email,
       productName: productName,
       amount: amount,
+      currency: process.env.PRODUCT_CURRENCY || 'INR',
+      currencySymbol: '₹',
       redirectUrl: `/vault?token=${encodeURIComponent(token)}&txnid=${encodeURIComponent(txnid)}&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&demo=1`
     });
   }

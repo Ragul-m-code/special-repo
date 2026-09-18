@@ -8,7 +8,8 @@ let appConfig = {
   demo: true,
   productName: "Secret to Dream",
   amount: "29.00",
-  currency: "USD",
+  currency: "INR",
+  currencySymbol: "₹",
   payuEnv: "test"
 };
 
@@ -235,25 +236,43 @@ document.addEventListener('DOMContentLoaded', () => {
   initFAQ();
 });
 
-// 1. Urgency Countdown Timer
+// 1. Urgency Countdown Timer (Continuous 5-Hour Loop, Invitations reduce from 200 to 8)
 function initCountdown() {
   const timerElements = document.querySelectorAll('.countdown-display');
-  if (!timerElements.length) return;
+  const headerCounter = document.getElementById('invitation-counter');
+  const heroCounter = document.getElementById('hero-invitation-counter');
+  if (!timerElements.length && !headerCounter && !heroCounter) return;
 
-  const storageKey = 'secret_to_dream_timer_end';
+  const storageKey = 'secret_to_dream_5hr_cycle_end';
+  const CYCLE_SECONDS = 5 * 3600; // 5 hours = 18000 seconds
+  const CYCLE_MS = CYCLE_SECONDS * 1000;
+  
   let targetTime = localStorage.getItem(storageKey);
+  const now = Date.now();
 
-  if (!targetTime || parseInt(targetTime, 10) <= Date.now()) {
-    targetTime = Date.now() + (3 * 3600 + 42 * 60 + 18) * 1000;
+  // Initialize or reset if expired or corrupted
+  if (!targetTime || parseInt(targetTime, 10) <= now || (parseInt(targetTime, 10) - now) > CYCLE_MS) {
+    targetTime = now + CYCLE_MS;
     localStorage.setItem(storageKey, targetTime.toString());
   }
 
   function update() {
-    const diff = Math.max(0, Math.floor((parseInt(targetTime, 10) - Date.now()) / 1000));
-    if (diff === 0) {
-      targetTime = Date.now() + (2 * 3600 + 14 * 60) * 1000;
+    const currentTime = Date.now();
+    let diff = Math.floor((parseInt(targetTime, 10) - currentTime) / 1000);
+
+    // Continuous 5-hour loop reset
+    if (diff <= 0) {
+      targetTime = currentTime + CYCLE_MS;
       localStorage.setItem(storageKey, targetTime.toString());
+      diff = CYCLE_SECONDS;
     }
+
+    // Calculate invitations: start at 200, reduce down to 8 over 5 hours
+    const elapsedSeconds = Math.max(0, CYCLE_SECONDS - diff);
+    const progress = Math.min(1, Math.max(0, elapsedSeconds / CYCLE_SECONDS));
+    const maxInvites = 200;
+    const minInvites = 8;
+    const currentInvites = Math.max(minInvites, Math.round(maxInvites - (progress * (maxInvites - minInvites))));
 
     const hrs = Math.floor(diff / 3600).toString().padStart(2, '0');
     const mins = Math.floor((diff % 3600) / 60).toString().padStart(2, '0');
@@ -263,6 +282,16 @@ function initCountdown() {
     timerElements.forEach(el => {
       el.textContent = timeStr;
     });
+
+    if (headerCounter) {
+      headerCounter.textContent = `${currentInvites} / 200`;
+    }
+
+    if (heroCounter) {
+      heroCounter.innerHTML = `${currentInvites} <span class="text-xs text-[#a69fae] font-sans font-normal">/ 200 LEFT</span>`;
+    }
+
+    window.__currentSanctumInvites = currentInvites;
   }
 
   update();
@@ -276,13 +305,14 @@ function initDiscreetFeed() {
   if (!feedElem) return;
 
   const notifications = [
-    { text: 'A private collector from Monaco unlocked Secret to Dream 4m ago', invites: 14 },
-    { text: 'Elena from Zurich unlocked the secret folio 11m ago', invites: 14 },
-    { text: 'Camille from London reserved an invitation token 2m ago', invites: 13 },
-    { text: 'A private member from Geneva verified possession 6m ago', invites: 13 },
-    { text: 'Alexander V. from New York accessed Part IV 1m ago', invites: 12 },
-    { text: 'A venture partner from Paris unlocked the audio archive 8m ago', invites: 12 },
-    { text: 'Marcus K. from Mayfair acquired unredacted dossier 3m ago', invites: 11 }
+    { text: 'A private collector from Monaco unlocked Secret to Dream 4m ago' },
+    { text: 'Elena from Zurich unlocked the secret folio 11m ago' },
+    { text: 'Camille from London reserved an invitation token 2m ago' },
+    { text: 'A private member from Geneva verified possession 6m ago' },
+    { text: 'Alexander V. from New York accessed Part IV 1m ago' },
+    { text: 'A venture partner from Paris unlocked the audio archive 8m ago' },
+    { text: 'Marcus K. from Mayfair acquired unredacted dossier 3m ago' },
+    { text: 'Julian R. from Dubai unlocked Secret to Dream 5m ago' }
   ];
 
   let index = 0;
@@ -292,8 +322,9 @@ function initDiscreetFeed() {
     setTimeout(() => {
       feedElem.textContent = notifications[index].text;
       feedElem.style.opacity = '1';
+      const liveInvites = window.__currentSanctumInvites || 200;
       if (counterElem) {
-        counterElem.textContent = `${notifications[index].invites} / 300`;
+        counterElem.textContent = `${liveInvites} / 200`;
       }
     }, 400);
   }, 6500);
@@ -385,7 +416,7 @@ function initModals() {
           <span class="material-symbols-outlined text-[36px] text-[#f2ca50] animate-spin">progress_activity</span>
           <div>
             <p class="font-headline-sm text-lg text-white font-medium">Securing Gateway Credentials...</p>
-            <p class="text-xs text-gray-400 mt-1">Routing order for ${appConfig.productName} ($${appConfig.amount})</p>
+            <p class="text-xs text-gray-400 mt-1">Routing order for ${appConfig.productName} (${appConfig.currencySymbol || '₹'}${appConfig.amount})</p>
           </div>
         </div>
       `;

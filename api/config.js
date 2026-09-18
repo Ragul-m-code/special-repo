@@ -47,7 +47,8 @@ module.exports = (req, res) => {
     demo: demoMode,
     productName: process.env.PRODUCT_NAME || 'Secret to Dream',
     amount: parseFloat(process.env.PRODUCT_AMOUNT || '29.00').toFixed(2),
-    currency: process.env.PRODUCT_CURRENCY || 'USD',
+    currency: process.env.PRODUCT_CURRENCY || 'INR',
+    currencySymbol: '₹',
     payuEnv: process.env.PAYU_ENV || 'test',
     notionUrl: process.env.NOTION_VAULT_URL || 'https://notion.so'
   };
