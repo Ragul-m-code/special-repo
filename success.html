@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Payment Successful • Secret to Dream // Sanctum Clearance</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            surface: "#14121a",
+            primary: "#f2ca50",
+            secondary: "#e0b6ff"
+          },
+          fontFamily: {
+            serif: ["Bodoni Moda", "serif"],
+            sans: ["Hanken Grotesk", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#0e0d14] text-[#f5f0eb] font-sans selection:bg-[#4c1d6b] selection:text-[#e0b6ff] min-h-screen flex flex-col antialiased relative">
+
+  <!-- Ambient Glow -->
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#4c1d6b]/20 blur-[150px] pointer-events-none rounded-full -z-10"></div>
+  <div class="fixed bottom-0 right-0 w-[500px] h-[500px] bg-[#d4af37]/10 blur-[150px] pointer-events-none rounded-full -z-10"></div>
+
+  <!-- Minimal Header -->
+  <header class="w-full bg-[#14121a]/90 backdrop-blur-xl border-b border-[#f2ca50]/15 py-4 px-6 lg:px-12 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-[#d4af37] to-[#f2ca50] flex items-center justify-center p-0.5 shadow-lg">
+        <div class="w-full h-full rounded-full bg-[#14121a] flex items-center justify-center text-[#f2ca50]">
+          <span class="material-symbols-outlined text-[18px]">verified</span>
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <span class="text-xs uppercase tracking-[0.2em] font-semibold text-white">SECRET TO DREAM</span>
+        <span class="text-[10px] tracking-widest text-[#f2ca50] uppercase font-mono">ORDER CLEARANCE FULFILLED</span>
+      </div>
+    </div>
+
+    <a href="index.html" class="text-xs font-mono uppercase tracking-widest text-[#a69fae] hover:text-[#f2ca50] transition-colors flex items-center gap-1">
+      <span>Home</span>
+      <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+    </a>
+  </header>
+
+  <!-- MAIN ORDER CONFIRMATION & ASSET DELIVERY -->
+  <main class="w-full max-w-4xl mx-auto px-6 py-12 flex-1 flex flex-col gap-10">
+    
+    <!-- Success Badge & Title -->
+    <div class="text-center flex flex-col items-center">
+      <div class="w-16 h-16 rounded-full bg-[#1c1a24] border border-[#f2ca50]/40 flex items-center justify-center text-[#f2ca50] shadow-2xl mb-4">
+        <span class="material-symbols-outlined text-[36px]">check_circle</span>
+      </div>
+      <span class="text-xs uppercase tracking-[0.3em] text-[#e0b6ff] font-semibold font-mono" id="mode-badge">
+        CLEARANCE AUTHORIZED
+      </span>
+      <h1 class="font-serif text-3xl sm:text-5xl text-[#f5f0eb] mt-2">
+        Your Vault Access Is Unlocked
+      </h1>
+      <p class="text-sm text-[#a69fae] max-w-lg mt-3 font-light leading-relaxed">
+        Thank you for purchasing <strong class="text-white font-medium">Secret to Dream</strong>. Your confidential credentials and product deliverables are ready for immediate download below.
+      </p>
+    </div>
+
+    <!-- Access Token Card -->
+    <div class="p-6 sm:p-8 rounded-2xl glass-card border border-[#f2ca50]/30 shadow-2xl flex flex-col items-center text-center gap-4 relative overflow-hidden">
+      <div class="absolute -right-16 -top-16 w-48 h-48 bg-[#f2ca50]/10 blur-[60px] pointer-events-none rounded-full"></div>
+      
+      <span class="text-[11px] uppercase tracking-[0.25em] text-[#a69fae] font-mono">CONFIDENTIAL ENCRYPTION KEY</span>
+      
+      <div class="flex flex-col sm:flex-row items-center gap-3 p-2 pl-6 pr-3 rounded-xl bg-[#14121a] border border-[#f2ca50]/40 shadow-inner">
+        <span class="font-mono text-xl sm:text-2xl text-[#f2ca50] font-bold tracking-widest select-all" id="token-display">
+          STD-VLT-DEMO
+        </span>
+        <button type="button" onclick="copyToken()" class="px-4 py-2 rounded-lg bg-[#242230] hover:bg-[#312e40] text-xs font-mono text-white flex items-center gap-1.5 transition-all">
+          <span class="material-symbols-outlined text-[16px] text-[#f2ca50]">content_copy</span>
+          <span id="copy-btn-text">Copy Key</span>
+        </button>
+      </div>
+
+      <p class="text-xs text-[#a69fae] font-light max-w-md">
+        Save this key for future access. You can use it anytime to log into the Member Sanctum directly from any device.
+      </p>
+
+      <div class="w-full max-w-sm pt-2">
+        <a href="vault.html" id="enter-vault-btn" class="w-full py-4 px-6 rounded-xl btn-gold text-xs tracking-widest uppercase flex items-center justify-center gap-2 shadow-xl">
+          <span>ENTER MEMBER SANCTUM NOW</span>
+          <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Order Metadata Summary -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 rounded-xl bg-[#181620] border border-[#f2ca50]/15 text-xs font-mono">
+      <div>
+        <span class="text-[#a69fae] text-[10px] uppercase tracking-wider block">PRODUCT</span>
+        <span class="text-white font-semibold">Secret to Dream</span>
+      </div>
+      <div>
+        <span class="text-[#a69fae] text-[10px] uppercase tracking-wider block">TRANSACTION ID</span>
+        <span class="text-[#f2ca50] truncate block" id="txnid-display">STD_938102</span>
+      </div>
+      <div>
+        <span class="text-[#a69fae] text-[10px] uppercase tracking-wider block">STATUS</span>
+        <span class="text-emerald-400 font-semibold flex items-center gap-1">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+          PAID ($29.00)
+        </span>
+      </div>
+      <div>
+        <span class="text-[#a69fae] text-[10px] uppercase tracking-wider block">CUSTOMER</span>
+        <span class="text-white truncate block" id="name-display">Private Member</span>
+      </div>
+    </div>
+
+    <!-- DELIVERABLES DOWNLOAD SUITE -->
+    <div class="flex flex-col gap-5">
+      <div class="flex items-center justify-between">
+        <div>
+          <span class="text-[10px] uppercase tracking-[0.25em] text-[#f2ca50] font-mono font-semibold">PACKAGE ASSETS</span>
+          <h3 class="font-serif text-2xl text-[#f5f0eb]">Instant Deliverables Download</h3>
+        </div>
+        <span class="text-xs text-[#a69fae] font-mono hidden sm:inline">ALL FILES READY</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        
+        <!-- Deliverable 1 -->
+        <div class="p-6 rounded-xl glass-card border border-[#f2ca50]/20 flex flex-col justify-between gap-4">
+          <div class="flex items-start gap-3.5">
+            <div class="w-10 h-10 rounded-lg bg-[#242230] border border-[#f2ca50]/30 flex items-center justify-center text-[#f2ca50] shrink-0">
+              <span class="material-symbols-outlined text-[22px]">menu_book</span>
+            </div>
+            <div>
+              <span class="text-[10px] font-mono text-[#e0b6ff] uppercase tracking-wider">PRIMARY DOSSIER</span>
+              <h4 class="font-serif text-lg text-white font-medium">The Complete Folio (PDF)</h4>
+              <p class="text-xs text-[#a69fae] font-light mt-1">Full unredacted psychological manuscript, Parts I-IV.</p>
+            </div>
+          </div>
+          <a href="downloads/Secret_to_Dream_The_Complete_Folio.pdf" download class="w-full py-2.5 px-4 rounded-lg bg-[#242230] hover:bg-[#312e40] border border-[#f2ca50]/30 text-xs font-mono text-[#f2ca50] flex items-center justify-center gap-2 transition-all">
+            <span class="material-symbols-outlined text-[16px]">download</span>
+            <span>Download Folio PDF</span>
+          </a>
+        </div>
+
+        <!-- Deliverable 2 -->
+        <div class="p-6 rounded-xl glass-card border border-[#f2ca50]/20 flex flex-col justify-between gap-4">
+          <div class="flex items-start gap-3.5">
+            <div class="w-10 h-10 rounded-lg bg-[#242230] border border-[#f2ca50]/30 flex items-center justify-center text-[#f2ca50] shrink-0">
+              <span class="material-symbols-outlined text-[22px]">checklist</span>
+            </div>
+            <div>
+              <span class="text-[10px] font-mono text-[#e0b6ff] uppercase tracking-wider">QUICK-REFERENCE</span>
+              <h4 class="font-serif text-lg text-white font-medium">Frameworks &amp; Cheatsheets (PDF)</h4>
+              <p class="text-xs text-[#a69fae] font-light mt-1">Key verbal calibration rules and behavioral anchors.</p>
+            </div>
+          </div>
+          <a href="downloads/Secret_to_Dream_Frameworks_Cheatsheet.pdf" download class="w-full py-2.5 px-4 rounded-lg bg-[#242230] hover:bg-[#312e40] border border-[#f2ca50]/30 text-xs font-mono text-[#f2ca50] flex items-center justify-center gap-2 transition-all">
+            <span class="material-symbols-outlined text-[16px]">download</span>
+            <span>Download Cheatsheet PDF</span>
+          </a>
+        </div>
+
+        <!-- Deliverable 3 -->
+        <div class="p-6 rounded-xl glass-card border border-[#f2ca50]/20 flex flex-col justify-between gap-4">
+          <div class="flex items-start gap-3.5">
+            <div class="w-10 h-10 rounded-lg bg-[#242230] border border-[#f2ca50]/30 flex items-center justify-center text-[#f2ca50] shrink-0">
+              <span class="material-symbols-outlined text-[22px]">library_music</span>
+            </div>
+            <div>
+              <span class="text-[10px] font-mono text-[#e0b6ff] uppercase tracking-wider">AUDIO ARCHIVE</span>
+              <h4 class="font-serif text-lg text-white font-medium">Master Audio Pack (ZIP)</h4>
+              <p class="text-xs text-[#a69fae] font-light mt-1">9 late-night unedited voice memos with full transcripts.</p>
+            </div>
+          </div>
+          <a href="downloads/secret_to_dream_master_audio_pack.zip" download class="w-full py-2.5 px-4 rounded-lg bg-[#242230] hover:bg-[#312e40] border border-[#f2ca50]/30 text-xs font-mono text-[#f2ca50] flex items-center justify-center gap-2 transition-all">
+            <span class="material-symbols-outlined text-[16px]">folder_zip</span>
+            <span>Download Audio ZIP Package</span>
+          </a>
+        </div>
+
+        <!-- Deliverable 4 -->
+        <div class="p-6 rounded-xl glass-card border border-[#f2ca50]/20 flex flex-col justify-between gap-4">
+          <div class="flex items-start gap-3.5">
+            <div class="w-10 h-10 rounded-lg bg-[#242230] border border-[#f2ca50]/30 flex items-center justify-center text-[#f2ca50] shrink-0">
+              <span class="material-symbols-outlined text-[22px]">folder_special</span>
+            </div>
+            <div>
+              <span class="text-[10px] font-mono text-[#e0b6ff] uppercase tracking-wider">NOTION ARCHIVE</span>
+              <h4 class="font-serif text-lg text-white font-medium">Notion Workspace (ZIP &amp; MD)</h4>
+              <p class="text-xs text-[#a69fae] font-light mt-1">Complete export package: dashboards, chapters &amp; relational databases.</p>
+            </div>
+          </div>
+          <div class="flex flex-col gap-2">
+            <a href="downloads/Secret_to_Dream_Notion_Workspace.zip" download="Secret_to_Dream_Notion_Workspace.zip" class="w-full py-2.5 px-4 rounded-lg bg-[#242230] hover:bg-[#312e40] border border-[#f2ca50]/30 text-xs font-mono text-[#f2ca50] flex items-center justify-center gap-2 transition-all">
+              <span class="material-symbols-outlined text-[16px]">download</span>
+              <span>Download Notion Workspace (.ZIP)</span>
+            </a>
+            <a href="downloads/Secret_to_Dream_Sovereign_Sanctum.md" download="Secret_to_Dream_Sovereign_Sanctum.md" class="text-center text-[11px] font-mono text-[#a69fae] hover:text-[#f2ca50] underline py-0.5">
+              Download Standalone Notion Page (.md)
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full bg-[#0c0b12] py-8 border-t border-[#f2ca50]/10 text-xs text-[#a69fae] text-center">
+    <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="font-mono text-[11px]">
+        SECRET TO DREAM // 1130 ARCHIVE · CONFIDENTIAL DELIVERY
+      </div>
+      <div class="text-[11px]">
+        Support: <span class="text-white font-mono">concierge@secrettodream.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Read Query Params
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token') || localStorage.getItem('nocturne_access_token') || 'STD-VLT-DEMO';
+    const txnid = urlParams.get('txnid') || 'TXN_' + Date.now().toString().substring(5);
+    const name = urlParams.get('name') || 'Private Collector';
+    const isDemo = urlParams.get('demo') === '1';
+
+    // Store token
+    localStorage.setItem('nocturne_access_token', token);
+
+    document.getElementById('token-display').textContent = token;
+    document.getElementById('txnid-display').textContent = txnid;
+    document.getElementById('name-display').textContent = decodeURIComponent(name);
+    
+    if (isDemo) {
+      document.getElementById('mode-badge').textContent = 'DEMO MODE PURCHASE // INSTANT CLEARANCE';
+    }
+
+    function copyToken() {
+      navigator.clipboard.writeText(token);
+      document.getElementById('copy-btn-text').textContent = 'Copied!';
+      setTimeout(() => {
+        document.getElementById('copy-btn-text').textContent = 'Copy Key';
+      }, 2500);
+    }
+  </script>
+</body>
+</html>

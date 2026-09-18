@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>SECRET TO DREAM // 1130 • Unlocked Member Sanctum &amp; Digital Vault</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            surface: "#14121a",
+            "surface-container": "#1c1b22",
+            "surface-container-low": "#181620",
+            "surface-container-high": "#242230",
+            "surface-container-highest": "#312e40",
+            primary: "#f2ca50",
+            "primary-container": "#d4af37",
+            "on-primary": "#1a1400",
+            secondary: "#e0b6ff",
+            "secondary-container": "#4c1d6b",
+            "on-surface": "#f5f0eb",
+            "on-surface-variant": "#a69fae"
+          },
+          fontFamily: {
+            serif: ["Bodoni Moda", "serif"],
+            sans: ["Hanken Grotesk", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"],
+            display: ["Space Grotesk", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#0e0d14] text-[#f5f0eb] font-sans selection:bg-[#4c1d6b] selection:text-[#e0b6ff] min-h-screen flex flex-col antialiased relative">
+
+  <!-- Ambient Glow -->
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#4c1d6b]/15 blur-[160px] pointer-events-none rounded-full -z-10"></div>
+  <div class="fixed bottom-0 right-0 w-[500px] h-[500px] bg-[#d4af37]/10 blur-[160px] pointer-events-none rounded-full -z-10"></div>
+
+  <!-- FIXED MEMBER HEADER -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#14121a]/90 backdrop-blur-xl border-b border-[#f2ca50]/15 shadow-[0_4px_30px_rgba(0,0,0,0.6)]">
+    <div class="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-6">
+      
+      <!-- Brand & Status -->
+      <div class="flex items-center gap-3.5 shrink-0">
+        <a href="index.html" class="w-9 h-9 rounded-full bg-gradient-to-tr from-[#d4af37] to-[#f2ca50] flex items-center justify-center p-0.5 shadow-lg">
+          <div class="w-full h-full rounded-full bg-[#14121a] flex items-center justify-center text-[#f2ca50]">
+            <span class="material-symbols-outlined text-[20px]">lock_open</span>
+          </div>
+        </a>
+        <div class="flex flex-col">
+          <div class="text-xs uppercase tracking-[0.25em] text-[#f5f0eb] font-semibold flex items-center gap-1.5">
+            SECRET TO DREAM <span class="text-[#f2ca50] font-light">//</span> 1130
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="text-[10px] tracking-widest text-[#f2ca50] uppercase font-mono" id="sanctum-token-badge">TOKEN: VERIFIED</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Section Tabs -->
+      <nav class="hidden md:flex items-center gap-6 text-xs uppercase tracking-[0.2em] font-medium text-[#a69fae]">
+        <button type="button" onclick="switchVaultTab('audio')" id="tab-btn-audio" class="vault-tab-btn text-[#f2ca50] border-b-2 border-[#f2ca50] pb-1">
+          Audio Archive (9 Memos)
+        </button>
+        <button type="button" onclick="switchVaultTab('manuscript')" id="tab-btn-manuscript" class="vault-tab-btn hover:text-[#f2ca50] transition-colors pb-1">
+          Digital Manuscript
+        </button>
+        <button type="button" onclick="switchVaultTab('downloads')" id="tab-btn-downloads" class="vault-tab-btn hover:text-[#f2ca50] transition-colors pb-1">
+          Deliverables &amp; Downloads
+        </button>
+      </nav>
+
+      <!-- Member Actions -->
+      <div class="flex items-center gap-3 shrink-0">
+        <!-- Cipher Mode Toggle Button -->
+        <button type="button" id="cipher-mode-toggle" class="px-3.5 py-1.5 rounded-full bg-[#242230] border border-[#f2ca50]/30 text-xs font-mono text-[#e0b6ff] hover:text-[#f2ca50] flex items-center gap-2 transition-all" title="Toggle Cipher / Terminal Interface">
+          <span class="material-symbols-outlined text-[16px]">terminal</span>
+          <span class="hidden sm:inline">Cipher View</span>
+        </button>
+
+        <!-- Return / Exit Link -->
+        <a href="index.html" class="px-3.5 py-1.5 rounded-full bg-[#181620] hover:bg-[#242230] border border-[#f2ca50]/20 text-xs text-[#a69fae] hover:text-white flex items-center gap-1.5 transition-all">
+          <span class="material-symbols-outlined text-[16px]">logout</span>
+          <span class="hidden sm:inline">Exit Vault</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- MAIN VAULT CONTENT -->
+  <main class="w-full pt-28 pb-24 px-6 lg:px-12 max-w-7xl mx-auto flex-1 flex flex-col gap-12">
+    
+    <!-- Member Welcome Banner -->
+    <div class="p-6 sm:p-8 rounded-2xl glass-card border border-[#f2ca50]/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div class="flex flex-col gap-1">
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded bg-[#4c1d6b]/60 text-[#e0b6ff] font-mono text-[10px] uppercase tracking-widest border border-[#e0b6ff]/30">
+            SECRET TO DREAM // 1130 ARCHIVE
+          </span>
+          <span class="text-xs text-[#a69fae] font-mono">// ALLOCATION GRANTED</span>
+        </div>
+        <h1 class="font-serif text-2xl sm:text-3xl text-[#f5f0eb]">
+          Welcome to the Private Sanctum
+        </h1>
+        <p class="text-xs sm:text-sm text-[#a69fae] font-light max-w-xl">
+          Your access token grants unredacted streaming to all 9 late-night voice notes, the complete digital manuscript, and instant Notion vault replication.
+        </p>
+      </div>
+
+      <div class="p-3.5 rounded-xl bg-[#14121a] border border-[#f2ca50]/20 flex items-center gap-4 text-xs font-mono">
+        <div>
+          <span class="text-[10px] text-[#a69fae] uppercase tracking-wider block">KEY ID</span>
+          <span class="text-[#f2ca50] font-semibold text-sm" id="display-key">STD-VLT-DEMO</span>
+        </div>
+        <button type="button" onclick="copyActiveKey()" class="p-2 rounded bg-[#242230] text-[#a69fae] hover:text-[#f2ca50] transition-colors" title="Copy Key">
+          <span class="material-symbols-outlined text-[16px]">content_copy</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- TAB 1: AUDIO ARCHIVE PLAYER (DEFAULT) -->
+    <section id="vault-audio-section" class="flex flex-col gap-8">
+      
+      <!-- Active Audio Console Card -->
+      <div class="p-8 sm:p-12 rounded-3xl bg-[#181620]/95 border border-[#f2ca50]/30 shadow-2xl backdrop-blur-xl relative overflow-hidden">
+        
+        <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 mb-8 pb-8 border-b border-[#f2ca50]/15">
+          <div class="flex items-center gap-5">
+            <button type="button" id="master-play-btn" class="w-16 h-16 rounded-full bg-[#f2ca50] text-[#14121a] flex items-center justify-center shadow-xl hover:scale-105 active:scale-95 transition-all shrink-0">
+              <span class="material-symbols-outlined text-[32px]" id="master-play-icon">play_arrow</span>
+            </button>
+            <div class="flex flex-col">
+              <span class="text-xs uppercase tracking-[0.25em] text-[#e0b6ff] font-semibold" id="active-memo-category">
+                MEMO #01 · AUDIO CONFESSION
+              </span>
+              <h2 class="font-serif text-2xl sm:text-3xl text-[#f5f0eb] mt-1" id="active-memo-title">
+                The Midnight Call: What Women Crave But Never Say
+              </h2>
+              <span class="text-xs text-[#a69fae] font-light mt-1" id="active-memo-subtitle">
+                Recorded 03:19 AM · Uncut audio diary on unspoken attraction &amp; dynamic tension
+              </span>
+            </div>
+          </div>
+
+          <!-- Time Indicator -->
+          <div class="flex items-center gap-4">
+            <div class="text-right">
+              <p class="font-mono text-xs text-[#a69fae]">ELAPSED / TOTAL</p>
+              <p class="font-mono text-lg text-[#f2ca50] font-semibold" id="master-time-display">00:00 / 00:00</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Waveform Progress Track -->
+        <div id="master-track-bar" class="w-full py-4 cursor-pointer group">
+          <div class="w-full h-2 bg-[#242230] rounded-full overflow-hidden relative">
+            <div id="master-progress-fill" class="h-full bg-gradient-to-r from-[#d4af37] to-[#f2ca50] w-[0%] transition-all duration-150"></div>
+          </div>
+          <div class="flex items-center justify-between text-[11px] font-mono text-[#a69fae] mt-2">
+            <span id="master-current-time">00:00</span>
+            <span class="text-[#e0b6ff]">AUTHENTIC MP3 MASTER AUDIO STREAM</span>
+            <span id="master-duration-display">Loading...</span>
+          </div>
+        </div>
+
+        <!-- Transcript Reveal Drawer -->
+        <div class="mt-6 pt-6 border-t border-[#f2ca50]/10">
+          <details class="group" open>
+            <summary class="flex items-center justify-between cursor-pointer list-none text-xs uppercase tracking-widest text-[#f2ca50] hover:text-white transition-colors">
+              <span class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px]">subject</span>
+                <span>View Full Transcript &amp; Behavioral Notes</span>
+              </span>
+              <span class="material-symbols-outlined text-[18px] group-open:rotate-180 transition-transform">expand_more</span>
+            </summary>
+            <div class="mt-4 p-6 rounded-xl bg-[#14121a] border border-[#f2ca50]/15 text-sm text-[#a69fae] font-light leading-relaxed space-y-3" id="active-transcript-text">
+              <p>“Most men ruin the dynamic before it even begins because they negotiate attraction. You cannot persuade a woman to desire you through verbal logic or excessive accommodation...”</p>
+              <p>“When a woman tests a man, she isn't hoping he yields. She is praying he doesn't flinch. The moment your frame bends to mirror her temporary emotional volatility, the enchantment breaks...”</p>
+              <p class="text-xs text-[#e0b6ff] italic font-sans">// Behavioral Key: Hold your center. Pause 2 full seconds before answering high-stakes emotional questions. It signals supreme autonomic composure.</p>
+            </div>
+          </details>
+        </div>
+
+      </div>
+
+      <!-- Playlist of 9 Voice Memos -->
+      <div class="flex flex-col gap-3">
+        <h3 class="text-xs uppercase tracking-[0.25em] text-[#f2ca50] font-semibold px-1">
+          Complete Voice Memo Tracklist (9 Uncut Sessions)
+        </h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="memo-grid">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- TAB 2: DIGITAL MANUSCRIPT READER (HIDDEN INITIALLY) -->
+    <section id="vault-manuscript-section" class="hidden flex flex-col gap-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Chapter Sidebar -->
+        <div class="lg:col-span-4 flex flex-col gap-3">
+          <span class="text-xs uppercase tracking-[0.2em] text-[#f2ca50] font-semibold px-1">Chapters</span>
+          
+          <button type="button" onclick="loadChapter(1)" id="chap-btn-1" class="chap-nav-btn text-left p-4 rounded-xl bg-[#181620] border border-[#f2ca50]/40 text-[#f5f0eb] transition-all">
+            <span class="text-[10px] uppercase tracking-widest text-[#f2ca50] block font-mono">CHAPTER 01</span>
+            <span class="font-serif text-base font-semibold">The Silent Seduction Playbook</span>
+            <span class="text-xs text-[#a69fae] block mt-1 font-light">Autonomic frame, stillness, and vocal gravity</span>
+          </button>
+
+          <button type="button" onclick="loadChapter(2)" id="chap-btn-2" class="chap-nav-btn text-left p-4 rounded-xl bg-[#14121a] border border-[#f2ca50]/15 text-[#a69fae] hover:text-[#f5f0eb] transition-all">
+            <span class="text-[10px] uppercase tracking-widest text-[#a69fae] block font-mono">CHAPTER 02</span>
+            <span class="font-serif text-base font-semibold">The Modern Siren's Blueprint</span>
+            <span class="text-xs text-[#a69fae] block mt-1 font-light">Dynamic tension &amp; conversational pacing</span>
+          </button>
+
+          <button type="button" onclick="loadChapter(3)" id="chap-btn-3" class="chap-nav-btn text-left p-4 rounded-xl bg-[#14121a] border border-[#f2ca50]/15 text-[#a69fae] hover:text-[#f5f0eb] transition-all">
+            <span class="text-[10px] uppercase tracking-widest text-[#a69fae] block font-mono">CHAPTER 03</span>
+            <span class="font-serif text-base font-semibold">The Obsidian Protocols</span>
+            <span class="text-xs text-[#a69fae] block mt-1 font-light">Deep emotional leverage &amp; perpetual intrigue</span>
+          </button>
+        </div>
+
+        <!-- Manuscript Reader Canvas -->
+        <div class="lg:col-span-8 p-8 sm:p-12 rounded-2xl glass-card border border-[#f2ca50]/20" id="chapter-canvas">
+          <!-- Populated dynamically -->
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- TAB 3: DOWNLOADS & NOTION EXPORTS (HIDDEN INITIALLY) -->
+    <section id="vault-downloads-section" class="hidden flex flex-col gap-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Notion Export Card -->
+        <div class="p-6 rounded-2xl glass-card border border-[#f2ca50]/25 flex flex-col justify-between gap-6">
+          <div>
+            <div class="w-11 h-11 rounded-xl bg-[#242230] border border-[#f2ca50]/30 flex items-center justify-center text-[#f2ca50] mb-4">
+              <span class="material-symbols-outlined text-[24px]">folder_special</span>
+            </div>
+            <span class="text-[10px] uppercase tracking-widest text-[#e0b6ff] font-mono font-semibold">NOTION EXPORT PACKAGE</span>
+            <h3 class="font-serif text-xl text-[#f5f0eb] mt-1">Notion Master Workspace</h3>
+            <p class="text-xs text-[#a69fae] mt-2 font-light leading-relaxed">
+              Complete native Notion export package (.ZIP &amp; .MD) with private dashboards, chapters &amp; relational databases.
+            </p>
+          </div>
+          <div class="flex flex-col gap-2">
+            <a href="downloads/Secret_to_Dream_Notion_Workspace.zip" download="Secret_to_Dream_Notion_Workspace.zip" class="w-full py-3 rounded-xl btn-gold text-xs tracking-widest uppercase flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-[16px]">download</span>
+              <span>DOWNLOAD NOTION (.ZIP)</span>
+            </a>
+            <a href="downloads/Secret_to_Dream_Sovereign_Sanctum.md" download="Secret_to_Dream_Sovereign_Sanctum.md" class="text-center text-[10px] font-mono text-[#a69fae] hover:text-[#f2ca50] underline">
+              Download Standalone .MD File
+            </a>
+          </div>
+        </div>
+
+        <!-- Audio ZIP Card -->
+        <div class="p-6 rounded-2xl glass-card border border-[#f2ca50]/25 flex flex-col justify-between gap-6">
+          <div>
+            <div class="w-11 h-11 rounded-xl bg-[#242230] border border-[#f2ca50]/30 flex items-center justify-center text-[#f2ca50] mb-4">
+              <span class="material-symbols-outlined text-[24px]">library_music</span>
+            </div>
+            <span class="text-[10px] uppercase tracking-widest text-[#e0b6ff] font-mono font-semibold">OFFLINE ARCHIVE</span>
+            <h3 class="font-serif text-xl text-[#f5f0eb] mt-1">Master Audio Pack</h3>
+            <p class="text-xs text-[#a69fae] mt-2 font-light leading-relaxed">
+              All 9 authentic voice memos and transcripts bundled into an archive package.
+            </p>
+          </div>
+          <a href="downloads/secret_to_dream_master_audio_pack.zip" download="Secret_to_Dream_Master_Audio_Pack.zip" class="w-full py-3 rounded-xl btn-outline-subtle text-xs tracking-widest uppercase flex items-center justify-center gap-2">
+            <span class="material-symbols-outlined text-[16px]">cloud_download</span>
+            <span>DOWNLOAD ZIP</span>
+          </a>
+        </div>
+
+        <!-- Encrypted PDF Dossier -->
+        <div class="p-6 rounded-2xl glass-card border border-[#f2ca50]/25 flex flex-col justify-between gap-6">
+          <div>
+            <div class="w-11 h-11 rounded-xl bg-[#242230] border border-[#f2ca50]/30 flex items-center justify-center text-[#f2ca50] mb-4">
+              <span class="material-symbols-outlined text-[24px]">menu_book</span>
+            </div>
+            <span class="text-[10px] uppercase tracking-widest text-[#e0b6ff] font-mono font-semibold">PRINT-READY DOSSIER</span>
+            <h3 class="font-serif text-xl text-[#f5f0eb] mt-1">The Complete Folio</h3>
+            <p class="text-xs text-[#a69fae] mt-2 font-light leading-relaxed">
+              Formatted PDF manuscript with all psychological frameworks for mobile &amp; desktop.
+            </p>
+          </div>
+          <a href="downloads/Secret_to_Dream_The_Complete_Folio.pdf" download="Secret_to_Dream_The_Complete_Folio.pdf" class="w-full py-3 rounded-xl btn-outline-subtle text-xs tracking-widest uppercase flex items-center justify-center gap-2">
+            <span class="material-symbols-outlined text-[16px]">download</span>
+            <span>DOWNLOAD PDF</span>
+          </a>
+        </div>
+
+        <!-- Cheatsheet PDF -->
+        <div class="p-6 rounded-2xl glass-card border border-[#f2ca50]/25 flex flex-col justify-between gap-6">
+          <div>
+            <div class="w-11 h-11 rounded-xl bg-[#242230] border border-[#f2ca50]/30 flex items-center justify-center text-[#f2ca50] mb-4">
+              <span class="material-symbols-outlined text-[24px]">checklist</span>
+            </div>
+            <span class="text-[10px] uppercase tracking-widest text-[#e0b6ff] font-mono font-semibold">QUICK REFERENCE</span>
+            <h3 class="font-serif text-xl text-[#f5f0eb] mt-1">Frameworks Cheat-Sheet</h3>
+            <p class="text-xs text-[#a69fae] mt-2 font-light leading-relaxed">
+              One-page summary of verbal calibrations, frame control cues, and core principles.
+            </p>
+          </div>
+          <a href="downloads/Secret_to_Dream_Frameworks_Cheatsheet.pdf" download="Secret_to_Dream_Frameworks_Cheatsheet.pdf" class="w-full py-3 rounded-xl btn-outline-subtle text-xs tracking-widest uppercase flex items-center justify-center gap-2">
+            <span class="material-symbols-outlined text-[16px]">download</span>
+            <span>CHEATSHEET PDF</span>
+          </a>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="w-full bg-[#0c0b12] py-10 border-t border-[#f2ca50]/10 text-xs text-[#a69fae]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2 font-mono">
+        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+        <span>SECRET TO DREAM ENCRYPTION: ACTIVE (AES-256)</span>
+      </div>
+      <div class="tracking-widest uppercase text-[11px]">
+        &copy; 2025 SECRET TO DREAM ATELIER. CONFIDENTIAL TO TOKEN HOLDER.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+  <script>
+    // 9 Authentic Voice Memos Data with real MP3 file bindings
+    const memoData = [
+      {
+        id: 1,
+        title: "The Midnight Call: What Women Crave But Never Say",
+        file: "audio/memo_01.mp3",
+        category: "MEMO #01 · AUDIO CONFESSION",
+        subtitle: "Recorded 03:19 AM · The unvarnished truth on female desire vs. public posturing",
+        excerpt: "Why negotiating attraction guarantees rejection, and how stillness creates immediate intrigue.",
+        transcript: "“Most men ruin the dynamic before it even begins because they negotiate attraction. You cannot persuade a woman to desire you through verbal logic or excessive accommodation. When a woman tests a man, she isn't hoping he yields. She is praying he doesn't flinch. The moment your frame bends to mirror her temporary emotional volatility, the enchantment breaks.”"
+      },
+      {
+        id: 2,
+        title: "Micro-Signals of Genuine Obsession",
+        file: "audio/memo_02.mp3",
+        category: "MEMO #02 · BEHAVIORAL DECODE",
+        subtitle: "Recorded 02:40 AM · Reading subtle pupil dilation, postural angling, and delayed cadence",
+        excerpt: "Decoding the involuntary physiological reactions that reveal genuine obsession before words are spoken.",
+        transcript: "“Watch how she holds her breath when you stop speaking. Notice if her shoulders drop or if she subtly realigns her collarbone towards your center. An elite woman will never verbalize her fascination early; she tests your awareness through calculated silence.”"
+      },
+      {
+        id: 3,
+        title: "High-Value Frame Control Without Arrogance",
+        file: "audio/memo_03.mp3",
+        category: "MEMO #03 · POWER DYNAMICS",
+        subtitle: "Recorded 01:15 AM · The fine boundary between quiet masculine gravity and performative machismo",
+        excerpt: "Why arrogance repels high-caliber women while calm certainty magnetically commands devotion.",
+        transcript: "“Arrogance is noisy; it requires validation from the room. Sovereignty is quiet; it exists independently of external reaction. When you stop qualifying your statements or apologizing for your standards, you instantly separate yourself from 99% of men.”"
+      },
+      {
+        id: 4,
+        title: "The Tension That Creates Devotion",
+        file: "audio/memo_04.mp3",
+        category: "MEMO #04 · ATTRACTION ALCHEMY",
+        subtitle: "Recorded 04:10 AM · How emotional contrast and unpredictability heighten feminine devotion",
+        excerpt: "Balancing warmth with emotional autonomy to create enduring psychological pull.",
+        transcript: "“Predictability kills passion faster than cruelty. A woman desires a man whose internal landscape is an unexplored cathedral, not an open billboard on the highway. Never reveal all your cards in one sitting.”"
+      },
+      {
+        id: 5,
+        title: "What Repels an Elite Woman Immediately",
+        file: "audio/memo_05.mp3",
+        category: "MEMO #05 · CRITICAL PITFALLS",
+        subtitle: "Recorded 02:05 AM · The 4 subtle behaviors that instantly destroy feminine respect",
+        excerpt: "Avoid the fatal conversational and physical traps that dissolve attraction in minutes.",
+        transcript: "“Rushing the pacing. Seeking permission through rising inflections. Asking ‘Is this okay?’ every ten seconds instead of attuning with quiet calibrated awareness. These betray lack of masculine confidence.”"
+      },
+      {
+        id: 6,
+        title: "Seduction in Public Spaces: The Unspoken Gaze",
+        file: "audio/memo_06.mp3",
+        category: "MEMO #06 · SPATIAL DYNAMICS",
+        subtitle: "Recorded 11:45 PM · Eye contact pacing, vocal tone registers, and entering her orbit",
+        excerpt: "Commanding attention in high-end venues without shouting or posturing.",
+        transcript: "“Hold the gaze two beats longer than what feels polite, then slowly glance away on your own terms. It introduces an unanswered question in her mind that she will obsess over for the rest of the evening.”"
+      },
+      {
+        id: 7,
+        title: "Unmasking Female Testing: How to Pass Every Time",
+        file: "audio/memo_07.mp3",
+        category: "MEMO #07 · FRAME RESILIENCE",
+        subtitle: "Recorded 03:50 AM · Deconstructing the subconscious tests women use to evaluate masculine fortitude",
+        excerpt: "Turn conversational tests into powerful moments of mutual flirtation and elevated status.",
+        transcript: "“When she throws a challenge, do not defend yourself. Agree and amplify with subtle humor, or simply gaze back with a knowing half-smile. A man who cannot be provoked cannot be defeated.”"
+      },
+      {
+        id: 8,
+        title: "The Intimacy Matrix: Beyond Physical Chemistry",
+        file: "audio/memo_08.mp3",
+        category: "MEMO #08 · SACRED CONNECTION",
+        subtitle: "Recorded 01:30 AM · Transitioning from surface attraction into profound soul-level exclusivity",
+        excerpt: "Cultivating the rare psychological intimacy that binds an exceptional partner exclusively to you.",
+        transcript: "“True intimacy occurs when she realizes you see through her carefully cultivated social mask to the delicate, sensual woman beneath—and you cherish that vulnerability without weaponizing it.”"
+      },
+      {
+        id: 9,
+        title: "The Obsidian Protocol: The Final Directive",
+        file: "audio/memo_09.mp3",
+        category: "MEMO #09 · THE MASTERWORK",
+        subtitle: "Recorded 04:45 AM · The culminating behavioral philosophy for sovereign masculine living",
+        excerpt: "The master synthesis of power, affection, boundaries, and timeless magnetic presence.",
+        transcript: "“Never compromise your core mission for any woman, and ironically, she will move heaven and earth to remain by your side. A woman wants to be your muse and your sanctuary, never your substitute for a life purpose.”"
+      }
+    ];
+
+    let currentMemoId = 1;
+    let masterAudio = new Audio();
+    masterAudio.preload = 'auto';
+
+    // Initialize Vault Page
+    document.addEventListener('DOMContentLoaded', () => {
+      const storedToken = localStorage.getItem('nocturne_access_token') || 'STD-VLT-DEMO';
+      const keyBadge = document.getElementById('sanctum-token-badge');
+      const keyDisplay = document.getElementById('display-key');
+      if (keyBadge) keyBadge.textContent = `KEY: ${storedToken}`;
+      if (keyDisplay) keyDisplay.textContent = storedToken;
+
+      renderMemoList();
+      loadChapter(1);
+      setupCipherToggle();
+      setupMasterAudioPlayer();
+      loadMemoAudio(1, false);
+    });
+
+    function setupMasterAudioPlayer() {
+      const playBtn = document.getElementById('master-play-btn');
+      const trackBar = document.getElementById('master-track-bar');
+
+      if (playBtn) {
+        playBtn.addEventListener('click', toggleMasterPlayback);
+      }
+
+      if (trackBar) {
+        trackBar.addEventListener('click', (e) => {
+          if (!masterAudio.duration) return;
+          const rect = trackBar.getBoundingClientRect();
+          const clickX = e.clientX - rect.left;
+          const ratio = Math.max(0, Math.min(1, clickX / rect.width));
+          masterAudio.currentTime = ratio * masterAudio.duration;
+        });
+      }
+
+      masterAudio.ontimeupdate = () => {
+        const cur = masterAudio.currentTime;
+        const dur = masterAudio.duration || 1;
+        const pct = (cur / dur) * 100;
+
+        const curMins = Math.floor(cur / 60).toString().padStart(2, '0');
+        const curSecs = Math.floor(cur % 60).toString().padStart(2, '0');
+        const durMins = Math.floor(dur / 60).toString().padStart(2, '0');
+        const durSecs = Math.floor(dur % 60).toString().padStart(2, '0');
+
+        document.getElementById('master-progress-fill').style.width = `${pct}%`;
+        document.getElementById('master-current-time').textContent = `${curMins}:${curSecs}`;
+        document.getElementById('master-time-display').textContent = `${curMins}:${curSecs} / ${durMins}:${durSecs}`;
+      };
+
+      masterAudio.onloadedmetadata = () => {
+        const dur = masterAudio.duration || 0;
+        const durMins = Math.floor(dur / 60).toString().padStart(2, '0');
+        const durSecs = Math.floor(dur % 60).toString().padStart(2, '0');
+        document.getElementById('master-duration-display').textContent = `${durMins}:${durSecs}`;
+        document.getElementById('master-time-display').textContent = `00:00 / ${durMins}:${durSecs}`;
+      };
+
+      masterAudio.onended = () => {
+        document.getElementById('master-play-icon').textContent = 'play_arrow';
+        renderMemoList();
+        // Auto-advance to next track
+        if (currentMemoId < memoData.length) {
+          selectMemo(currentMemoId + 1);
+        }
+      };
+    }
+
+    function loadMemoAudio(id, autoPlay = false) {
+      currentMemoId = id;
+      const memo = memoData.find(m => m.id === id);
+      if (!memo) return;
+
+      masterAudio.src = memo.file;
+
+      document.getElementById('active-memo-category').textContent = memo.category;
+      document.getElementById('active-memo-title').textContent = memo.title;
+      document.getElementById('active-memo-subtitle').textContent = memo.subtitle;
+      document.getElementById('active-transcript-text').innerHTML = `
+        <p>${memo.transcript}</p>
+        <p class="text-xs text-[#e0b6ff] italic font-sans">// Behavioral Key: Attune with composure. Hold stillness in your physical posture.</p>
+      `;
+
+      if (autoPlay) {
+        masterAudio.play().then(() => {
+          document.getElementById('master-play-icon').textContent = 'pause';
+          showToast(`Now Playing: Memo #${memo.id}`, 'success');
+        }).catch(err => {
+          console.warn("Autoplay blocked:", err);
+          document.getElementById('master-play-icon').textContent = 'play_arrow';
+        });
+      } else {
+        document.getElementById('master-play-icon').textContent = 'play_arrow';
+      }
+
+      renderMemoList();
+    }
+
+    function toggleMasterPlayback() {
+      if (masterAudio.paused) {
+        masterAudio.play().then(() => {
+          document.getElementById('master-play-icon').textContent = 'pause';
+          renderMemoList();
+          showToast(`Playing Memo #${currentMemoId}`, 'success');
+        }).catch(err => {
+          showToast("Click play button again to enable audio.", "warning");
+        });
+      } else {
+        masterAudio.pause();
+        document.getElementById('master-play-icon').textContent = 'play_arrow';
+        renderMemoList();
+        showToast("Audio paused", "info");
+      }
+    }
+
+    function renderMemoList() {
+      const grid = document.getElementById('memo-grid');
+      if (!grid) return;
+
+      const isPlaying = !masterAudio.paused;
+
+      grid.innerHTML = memoData.map(m => {
+        const isCurrent = m.id === currentMemoId;
+        return `
+          <div onclick="selectMemo(${m.id})" class="memo-card p-5 rounded-xl bg-[#14121a] border ${isCurrent ? 'border-[#f2ca50] bg-[#1a1823]' : 'border-[#f2ca50]/15'} hover:border-[#f2ca50]/50 cursor-pointer transition-all flex flex-col justify-between gap-3">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-mono tracking-widest text-[#e0b6ff] uppercase font-semibold">MEMO #0${m.id}</span>
+              <span class="text-[11px] font-mono text-[#f2ca50]">${isCurrent && isPlaying ? 'PLAYING NOW' : 'AUDIO READY'}</span>
+            </div>
+            <div>
+              <h4 class="font-serif text-base text-[#f5f0eb] leading-snug">${m.title}</h4>
+              <p class="text-xs text-[#a69fae] font-light mt-1 line-clamp-2">${m.excerpt}</p>
+            </div>
+            <div class="flex items-center justify-between pt-2 border-t border-[#f2ca50]/10 text-xs">
+              <span class="text-[10px] uppercase tracking-wider text-[#f2ca50] flex items-center gap-1 font-semibold">
+                <span class="material-symbols-outlined text-[16px]">${isCurrent && isPlaying ? 'pause_circle' : 'play_circle'}</span>
+                <span>${isCurrent && isPlaying ? 'PAUSE' : 'LISTEN'}</span>
+              </span>
+              <span class="material-symbols-outlined text-[#a69fae] text-[16px] ${isCurrent && isPlaying ? 'text-[#f2ca50] animate-pulse' : ''}">graphic_eq</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function selectMemo(id) {
+      if (id === currentMemoId) {
+        toggleMasterPlayback();
+      } else {
+        loadMemoAudio(id, true);
+      }
+    }
+
+    function switchVaultTab(tab) {
+      document.querySelectorAll('.vault-tab-btn').forEach(b => {
+        b.classList.remove('text-[#f2ca50]', 'border-b-2', 'border-[#f2ca50]');
+        b.classList.add('text-[#a69fae]');
+      });
+      document.getElementById(`tab-btn-${tab}`).classList.add('text-[#f2ca50]', 'border-b-2', 'border-[#f2ca50]');
+      document.getElementById(`tab-btn-${tab}`).classList.remove('text-[#a69fae]');
+
+      document.getElementById('vault-audio-section').classList.add('hidden');
+      document.getElementById('vault-manuscript-section').classList.add('hidden');
+      document.getElementById('vault-downloads-section').classList.add('hidden');
+
+      document.getElementById(`vault-${tab}-section`).classList.remove('hidden');
+    }
+
+    // Chapters Content
+    const chapters = {
+      1: {
+        title: "The Silent Seduction Playbook",
+        tag: "AUTONOMIC FRAME & VOCAL CALIBRATION",
+        body: `
+          <h2 class="font-serif text-3xl text-[#f5f0eb] mb-4">Chapter I: Autonomic Frame &amp; Sovereign Presence</h2>
+          <p class="text-sm text-[#a69fae] font-light leading-relaxed mb-6">
+            In any human interaction involving desire, power is determined by whoever is less reactive to emotional stimuli. An elite woman is accustomed to men who frantically mirror her every mood, who hasten their speech to win approval, and who offer nervous conversational filler whenever silence emerges.
+          </p>
+          <div class="p-6 rounded-xl bg-[#14121a] border border-[#f2ca50]/20 my-6">
+            <h4 class="font-serif text-lg text-[#f2ca50] mb-2">The Sovereign Anchor Principle</h4>
+            <p class="text-xs sm:text-sm text-[#f5f0eb] font-light leading-relaxed">
+              When she enters your space with unpredictable emotional energy, do not lean in to accommodate. Settle two inches deeper into your posture. Drop your vocal cadence half an octave. Speak from your diaphragm, not your throat. Unhurried speech communicates an unshakeable inner reality.
+            </p>
+          </div>
+          <p class="text-sm text-[#a69fae] font-light leading-relaxed mb-4">
+            Women test men not to break them, but to verify they cannot be broken. When you view every subtle challenge as an invitation to demonstrate amused composure, her attraction deepens into genuine reverence.
+          </p>
+        `
+      },
+      2: {
+        title: "The Modern Siren's Blueprint",
+        tag: "DYNAMIC TENSION & PSYCHOLOGICAL POLARITY",
+        body: `
+          <h2 class="font-serif text-3xl text-[#f5f0eb] mb-4">Chapter II: Dynamic Tension &amp; Conversational Pacing</h2>
+          <p class="text-sm text-[#a69fae] font-light leading-relaxed mb-6">
+            Attraction does not live in comfort; it breathes in the electric space between certainty and mystery. If a woman knows exactly what you will say, when you will message, and how quickly you will yield, desire withers into platonic safety.
+          </p>
+          <div class="p-6 rounded-xl bg-[#14121a] border border-[#e0b6ff]/20 my-6">
+            <h4 class="font-serif text-lg text-[#e0b6ff] mb-2">The Golden Ratio of Accessibility</h4>
+            <p class="text-xs sm:text-sm text-[#f5f0eb] font-light leading-relaxed">
+              Be 100% physically and emotionally present when together, but 100% engaged with your sovereign mission when apart. Never use texting as an endless conversational chatroom; use it as a crisp logistical tool to create high-impact rendezvous.
+            </p>
+          </div>
+          <p class="text-sm text-[#a69fae] font-light leading-relaxed mb-4">
+            A woman of high caliber wants a man who has things in his life that are more important than impressing her. That independence is the very foundation of her fascination.
+          </p>
+        `
+      },
+      3: {
+        title: "The Obsidian Protocols",
+        tag: "CONFIDENTIAL DIRECTIVE: LASTING EXCLUSIVITY",
+        body: `
+          <h2 class="font-serif text-3xl text-[#f5f0eb] mb-4">Chapter III: The Obsidian Protocols</h2>
+          <p class="text-sm text-[#a69fae] font-light leading-relaxed mb-6">
+            The culmination of female psychology rests in understanding emotional investment. People value what they invest in emotionally, psychologically, and temporally—not what is handed to them on a silver platter.
+          </p>
+          <div class="p-6 rounded-xl bg-[#14121a] border border-[#f2ca50]/25 my-6">
+            <h4 class="font-serif text-lg text-[#f2ca50] mb-2">The Non-Negotiable Standard</h4>
+            <p class="text-xs sm:text-sm text-[#f5f0eb] font-light leading-relaxed">
+              Hold uncompromising boundaries with absolute kindness. Never raise your voice; simply state reality with calm finality. A man who can walk away without bitterness or dramatic spectacle commands a degree of loyalty that no amount of courtship gifts can ever buy.
+            </p>
+          </div>
+          <p class="text-sm text-[#a69fae] font-light leading-relaxed">
+            Carry this knowing with quiet humility. The secret to enduring devotion is remaining the man she fears losing, because your self-worth was never held hostage by her approval.
+          </p>
+        `
+      }
+    };
+
+    function loadChapter(num) {
+      document.querySelectorAll('.chap-nav-btn').forEach(b => {
+        b.classList.remove('border-[#f2ca50]/40', 'bg-[#181620]', 'text-[#f5f0eb]');
+        b.classList.add('border-[#f2ca50]/15', 'bg-[#14121a]', 'text-[#a69fae]');
+      });
+      const activeBtn = document.getElementById(`chap-btn-${num}`);
+      if (activeBtn) {
+        activeBtn.classList.add('border-[#f2ca50]/40', 'bg-[#181620]', 'text-[#f5f0eb]');
+        activeBtn.classList.remove('border-[#f2ca50]/15', 'bg-[#14121a]', 'text-[#a69fae]');
+      }
+
+      const canvas = document.getElementById('chapter-canvas');
+      if (canvas && chapters[num]) {
+        canvas.innerHTML = chapters[num].body;
+      }
+    }
+
+    function setupCipherToggle() {
+      const toggleBtn = document.getElementById('cipher-mode-toggle');
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+          document.body.classList.toggle('cipher-mode');
+          const isCipher = document.body.classList.contains('cipher-mode');
+          if (isCipher) {
+            toggleBtn.innerHTML = '<span class="material-symbols-outlined text-[16px]">auto_awesome</span> <span class="hidden sm:inline">Luxury View</span>';
+            showToast("CIPHER // 1130 Terminal Telemetry Active", "success");
+          } else {
+            toggleBtn.innerHTML = '<span class="material-symbols-outlined text-[16px]">terminal</span> <span class="hidden sm:inline">Cipher View</span>';
+            showToast("Secret to Dream Luxury Sanctum Restored", "info");
+          }
+        });
+      }
+    }
+
+    function copyActiveKey() {
+      const key = localStorage.getItem('nocturne_access_token') || 'STD-VLT-DEMO';
+      navigator.clipboard.writeText(key);
+      showToast(`Token copied: ${key}`, 'success');
+    }
+  </script>
+</body>
+</html>

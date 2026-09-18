@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>SECRET TO DREAM // 1130 • Her Private Folio &amp; Secret Digital Vault</title>
+  <meta name="description" content="Secret to Dream: Confidential unredacted digital manuscript, raw private voice memos, and unvarnished female psychology playbook for discerning collectors.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            surface: "#14121a",
+            "surface-container": "#1c1b22",
+            "surface-container-low": "#181620",
+            "surface-container-high": "#242230",
+            "surface-container-highest": "#312e40",
+            primary: "#f2ca50",
+            "primary-container": "#d4af37",
+            "on-primary": "#1a1400",
+            secondary: "#e0b6ff",
+            "secondary-container": "#4c1d6b",
+            "on-surface": "#f5f0eb",
+            "on-surface-variant": "#a69fae"
+          },
+          fontFamily: {
+            serif: ["Bodoni Moda", "serif"],
+            sans: ["Hanken Grotesk", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#0e0d14] text-[#f5f0eb] font-sans selection:bg-[#4c1d6b] selection:text-[#e0b6ff] min-h-screen flex flex-col antialiased relative">
+
+  <!-- Atmospheric Ambient Spotlights -->
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[850px] h-[550px] bg-[#4c1d6b]/15 blur-[160px] pointer-events-none rounded-full -z-10"></div>
+  <div class="fixed top-1/3 -right-24 w-[450px] h-[450px] bg-[#d4af37]/10 blur-[150px] pointer-events-none rounded-full -z-10"></div>
+  <div class="fixed bottom-10 -left-20 w-[500px] h-[500px] bg-[#e0b6ff]/8 blur-[160px] pointer-events-none rounded-full -z-10"></div>
+
+  <!-- FIXED HEADER -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#14121a]/85 backdrop-blur-xl border-b border-[#f2ca50]/10 shadow-[0_4px_30px_rgba(0,0,0,0.6)]">
+    <div class="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-6">
+      
+      <!-- Brand Seal & Monogram -->
+      <a href="index.html" class="flex items-center gap-3.5 shrink-0 group">
+        <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-[#d4af37] to-[#f2ca50] flex items-center justify-center p-0.5 shadow-lg group-hover:scale-105 transition-transform">
+          <div class="w-full h-full rounded-full bg-[#14121a] flex items-center justify-center text-[#f2ca50]">
+            <span class="material-symbols-outlined text-[20px]">vpn_key</span>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <div class="text-xs uppercase tracking-[0.25em] text-[#f5f0eb] font-semibold flex items-center gap-1.5">
+            SECRET TO DREAM <span class="text-[#f2ca50] font-light">//</span> 1130
+          </div>
+          <span class="text-[10px] tracking-widest text-[#e0b6ff] uppercase font-light">HER PRIVATE FOLIO</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center gap-8 text-xs uppercase tracking-[0.2em] font-medium text-[#a69fae]">
+        <a href="#folio-preview" class="hover:text-[#f2ca50] transition-colors">The Folio</a>
+        <a href="#whispers-archive" class="hover:text-[#f2ca50] transition-colors">Whispers</a>
+        <a href="#audio-preview" class="hover:text-[#f2ca50] transition-colors">Audio Memo</a>
+        <a href="#unveil-checkout" class="hover:text-[#f2ca50] transition-colors">Token Unlock</a>
+        <a href="#curated-faq" class="hover:text-[#f2ca50] transition-colors">FAQ</a>
+      </nav>
+
+      <!-- Action Pills & Controls -->
+      <div class="flex items-center gap-3.5 shrink-0">
+        <!-- Ambient Soundscape Toggle -->
+        <button type="button" aria-label="Toggle Ambient Audio" class="ambient-sound-toggle w-9 h-9 rounded-full bg-[#242230] border border-[#f2ca50]/20 flex items-center justify-center text-[#a69fae] hover:text-[#f2ca50] transition-all hover:border-[#f2ca50]/50" title="Ambient sound toggle">
+          <span class="material-symbols-outlined text-[18px]">volume_off</span>
+        </button>
+
+        <!-- Status Pill -->
+        <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#181620] border border-[#f2ca50]/20">
+          <span class="w-2 h-2 rounded-full bg-[#e0b6ff] animate-ping"></span>
+          <span class="text-[11px] font-semibold text-[#f2ca50] tracking-widest uppercase">INVITE ONLY</span>
+        </div>
+
+        <!-- Sanctum Token Access Button -->
+        <button type="button" class="open-login-btn px-4 py-2 rounded-full bg-[#242230] hover:bg-[#312e40] border border-[#f2ca50]/30 text-xs text-[#f5f0eb] tracking-widest uppercase font-semibold flex items-center gap-2 transition-all">
+          <span class="material-symbols-outlined text-[16px] text-[#f2ca50]">lock_open</span>
+          <span>Access Sanctum</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="w-full pt-20 flex-1">
+    
+    <!-- TOP DISCREET DISPATCH TICKER -->
+    <section class="w-full bg-[#14121a]/90 backdrop-blur-md border-b border-[#f2ca50]/10 py-2.5 px-6">
+      <div class="max-w-7xl mx-auto flex items-center justify-between text-xs">
+        <div class="flex items-center gap-3">
+          <span class="w-2 h-2 rounded-full bg-[#f2ca50] animate-pulse"></span>
+          <span class="uppercase tracking-[0.2em] text-[#a69fae] font-semibold">DISPATCH DISCREET FEED</span>
+          <span class="text-[#f2ca50]/40 hidden sm:inline">//</span>
+          <span id="discreet-feed" class="text-[#f5f0eb] font-light hidden sm:inline transition-opacity duration-300">
+            A private collector from Monaco unlocked Secret to Dream 4m ago
+          </span>
+        </div>
+        <div class="flex items-center gap-2 font-mono">
+          <span class="text-[#e0b6ff] text-[11px] tracking-wider uppercase font-sans">INVITATIONS LEFT:</span>
+          <span id="invitation-counter" class="text-[#f2ca50] font-semibold px-2 py-0.5 rounded bg-[#242230] border border-[#f2ca50]/20">
+            14 / 300
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: EDITORIAL MYSTERY HERO -->
+    <section class="relative w-full py-20 lg:py-28 px-6 lg:px-12 flex flex-col items-center text-center overflow-hidden">
+      <div class="max-w-4xl mx-auto flex flex-col items-center relative z-10">
+        
+        <!-- Clearance Badge -->
+        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#181620] border border-[#f2ca50]/30 shadow-md mb-8 backdrop-blur-md">
+          <span class="material-symbols-outlined text-[16px] text-[#f2ca50]">lock</span>
+          <span class="text-[11px] font-semibold tracking-[0.25em] text-[#f2ca50] uppercase">
+            SECRET TO DREAM · VOL. 1130 · CONFIDENTIAL ARCHIVE
+          </span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl text-[#f5f0eb] tracking-tight mb-8 leading-[1.08]">
+          What she <span class="italic text-[#f2ca50]">really wants.</span><br class="hidden sm:inline">
+          What none of them will <span class="italic text-[#e0b6ff]">ever tell you.</span>
+        </h1>
+
+        <!-- Subheadline -->
+        <p class="text-base sm:text-lg text-[#a69fae] max-w-2xl mx-auto font-light leading-relaxed mb-10">
+          The confidential unredacted psychological playbook, unfiltered late-night voice notes, and raw confessions from behind closed doors. Curated exclusively for men who demand to understand female desire, magnetic presence, and unspoken fascination without the clichés.
+        </p>
+
+        <!-- Urgency & Scarcity Dashboard -->
+        <div class="w-full max-w-xl p-5 rounded-2xl bg-[#181620]/90 border border-[#f2ca50]/20 shadow-2xl backdrop-blur-xl flex flex-col sm:flex-row items-center justify-between gap-4 mb-10">
+          <div class="flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-full bg-[#242230] border border-[#f2ca50]/30 flex items-center justify-center text-[#f2ca50]">
+              <span class="material-symbols-outlined text-[22px]">hourglass_top</span>
+            </div>
+            <div class="text-left">
+              <p class="text-[10px] tracking-widest text-[#a69fae] uppercase font-semibold">WINDOW CLOSES IN</p>
+              <p class="font-mono text-xl sm:text-2xl text-[#f2ca50] font-semibold countdown-display">02:44:10</p>
+            </div>
+          </div>
+
+          <div class="h-10 w-px bg-[#312e40] hidden sm:block"></div>
+
+          <div class="flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-full bg-[#242230] border border-[#e0b6ff]/30 flex items-center justify-center text-[#e0b6ff]">
+              <span class="material-symbols-outlined text-[22px]">key</span>
+            </div>
+            <div class="text-left">
+              <p class="text-[10px] tracking-widest text-[#a69fae] uppercase font-semibold">EXCLUSIVE ALLOCATION</p>
+              <p class="font-mono text-xl sm:text-2xl text-[#e0b6ff] font-semibold">14 <span class="text-xs text-[#a69fae] font-sans font-normal">/ 300 LEFT</span></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+          <button type="button" class="open-checkout-btn w-full sm:w-auto px-8 py-4 btn-gold rounded-lg flex items-center justify-center gap-3 group text-xs">
+            <span>CLAIM PRIVATE ACCESS TOKEN</span>
+            <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+          </button>
+          <a href="#folio-preview" class="w-full sm:w-auto px-6 py-4 btn-outline-subtle rounded-lg text-xs text-center">
+            INSPECT THE FOLIO
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: THE SECRET FOLIO SHOWCASE -->
+    <section id="folio-preview" class="w-full bg-[#100f17] py-24 px-6 lg:px-12 border-t border-b border-[#f2ca50]/10 relative">
+      <div class="max-w-7xl mx-auto">
+        
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xs uppercase tracking-[0.3em] text-[#f2ca50] font-semibold">UNRELEASED DOSSIER</span>
+              <span class="text-[#a69fae]/40">//</span>
+              <span class="text-xs uppercase tracking-[0.2em] text-[#a69fae]">SECRET TO DREAM</span>
+            </div>
+            <h2 class="font-serif text-3xl sm:text-5xl text-[#f5f0eb] tracking-tight">
+              THE 1130 ARCHIVE <span class="italic text-[#e0b6ff] font-normal">// Possession</span>
+            </h2>
+          </div>
+          <p class="text-sm text-[#a69fae] max-w-md font-light leading-relaxed">
+            Raw recordings, uncensored behavioral breakdowns, and the exact psychological signals that create magnetic devotion. Unlocks immediately to your browser and encrypted vault.
+          </p>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          
+          <!-- Portrait Visual Anchor -->
+          <div class="lg:col-span-5 relative group">
+            <div class="relative rounded-2xl overflow-hidden bg-[#181620] border border-[#f2ca50]/20 shadow-2xl">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfz4bjkrJFl8x5C7IfBv0CzzDQe6ZIGMTJIT1O0h-abHF9OkfaEOYRuJyjAOr_bksEpSGmgtJiXvNckWfwKLzgGCocXBCU0xX7L13-hAjt5rAjkglAD_mDqLgAgFdEX2LhOZuRJ7tKLt_0k3VcJoWsdUQra87tZLgPuf4mnxf1t_hqYe-933NaZlvix9qL9WFtE7SP32-woSS2uVy5OdnitGqzUlmk5-ZaJgyDt9ZrJwslRAHGory_" 
+                   alt="Editorial portrait of an alluring woman in a backless silk gown holding a confidential black folio" 
+                   class="w-full aspect-[4/5] object-cover contrast-110 group-hover:scale-105 transition-all duration-700">
+              
+              <!-- Floating Card Badge -->
+              <div class="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-[#0e0d14]/85 backdrop-blur-md border border-[#f2ca50]/20 flex items-center justify-between">
+                <div>
+                  <p class="text-[10px] tracking-widest text-[#f2ca50] uppercase font-semibold">DIGITAL PRIVATE ACCESS</p>
+                  <p class="text-xs text-[#f5f0eb] font-light">Direct from her private sanctum</p>
+                </div>
+                <span class="material-symbols-outlined text-[#f2ca50] text-[22px]">verified</span>
+              </div>
+            </div>
+
+            <div class="mt-4 flex items-center justify-between text-[#a69fae] px-1 text-[11px] tracking-widest uppercase font-mono">
+              <span>CATALOGUE: STD-1130-M</span>
+              <span>FORMAT: MASTER AUDIO + NOTION VAULT</span>
+            </div>
+          </div>
+
+          <!-- Folio Parts List -->
+          <div class="lg:col-span-7 flex flex-col gap-4">
+            
+            <!-- Part 1 -->
+            <div class="p-6 rounded-xl glass-card border border-[#f2ca50]/15 flex flex-col gap-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold uppercase tracking-[0.25em] text-[#f2ca50]">PART I // PLAYBOOK</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-[#242230] text-[#e0b6ff] text-[10px] uppercase tracking-wider font-semibold border border-[#e0b6ff]/30">INCLUDED</span>
+              </div>
+              <h3 class="font-serif text-xl sm:text-2xl text-[#f5f0eb]">The Silent Seduction Playbook</h3>
+              <p class="text-sm text-[#a69fae] font-light leading-relaxed">
+                The exact psychological cues, body language dynamics, micro-signals, and subtle power shifts that make a man unforgettable in any room.
+              </p>
+            </div>
+
+            <!-- Part 2 -->
+            <div class="p-6 rounded-xl glass-card border border-[#f2ca50]/15 flex flex-col gap-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold uppercase tracking-[0.25em] text-[#f2ca50]">PART II // VOICE VERITÉ</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-[#242230] text-[#e0b6ff] text-[10px] uppercase tracking-wider font-semibold border border-[#e0b6ff]/30">9 UNCUT MEMOS</span>
+              </div>
+              <h3 class="font-serif text-xl sm:text-2xl text-[#f5f0eb]">Behind Closed Doors: Audio Confessions</h3>
+              <p class="text-sm text-[#a69fae] font-light leading-relaxed">
+                9 late-night unscripted audio notes recorded between 2 AM and 4 AM. Raw, candid observations detailing what triggers intoxicating obsession vs. what instantly repels.
+              </p>
+            </div>
+
+            <!-- Part 3 -->
+            <div class="p-6 rounded-xl glass-card border border-[#f2ca50]/15 flex flex-col gap-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold uppercase tracking-[0.25em] text-[#f2ca50]">PART III // BEHAVIORAL SCHEMA</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-[#242230] text-[#e0b6ff] text-[10px] uppercase tracking-wider font-semibold border border-[#e0b6ff]/30">FRAME CONTROL</span>
+              </div>
+              <h3 class="font-serif text-xl sm:text-2xl text-[#f5f0eb]">The Modern Siren's Blueprint</h3>
+              <p class="text-sm text-[#a69fae] font-light leading-relaxed">
+                Her personal directory detailing dynamic tension, high-status emotional autonomy, conversational pacing, and cultivating an unspoken masculine aura.
+              </p>
+            </div>
+
+            <!-- Part 4 (Redacted Interactive Item) -->
+            <div id="redacted-protocol-box" class="p-6 rounded-xl bg-[#14121a] border border-[#d4af37]/30 flex flex-col gap-2 cursor-pointer hover:border-[#f2ca50] transition-all group relative overflow-hidden">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold uppercase tracking-[0.25em] text-[#a69fae]">PART IV // CLASSIFIED DIRECTIVE</span>
+                <div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#4c1d6b]/40 text-[#e0b6ff] text-[10px] uppercase tracking-wider font-semibold border border-[#e0b6ff]/30">
+                  <span class="material-symbols-outlined text-[14px]">lock</span>
+                  <span>ENCRYPTED PROTOCOL</span>
+                </div>
+              </div>
+              <h3 class="font-serif text-xl sm:text-2xl text-[#f5f0eb] group-hover:text-[#f2ca50] transition-colors">
+                The Obsidian Protocols <span class="redacted-bar px-2 py-0.5 text-xs text-[#f2ca50] rounded">CONFIDENTIAL MANUSCRIPT</span>
+              </h3>
+              <p class="text-sm text-[#a69fae] font-light leading-relaxed">
+                The unvarnished truth on deep emotional leverage and lasting exclusivity. Click to request clearance unlock.
+              </p>
+            </div>
+
+            <!-- Delivery Guarantee Banner -->
+            <div class="p-4 rounded-xl bg-[#181620] border border-[#f2ca50]/20 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+              <div class="flex items-center gap-2.5 text-[#f5f0eb]">
+                <span class="material-symbols-outlined text-[#f2ca50] text-[20px]">cloud_download</span>
+                <span class="tracking-wide">Instant encrypted delivery · Lifetime Notion Workspace &amp; Master Audio ZIP</span>
+              </div>
+              <span class="text-[#f2ca50] font-semibold tracking-widest uppercase font-mono">READY FOR DISPATCH</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 3: INTERACTIVE AUDIO TEASER & WHISPERS -->
+    <section id="audio-preview" class="w-full py-24 px-6 lg:px-12 relative overflow-hidden">
+      <div class="max-w-5xl mx-auto">
+        
+        <div class="text-center mb-16">
+          <span class="text-xs uppercase tracking-[0.3em] text-[#f2ca50] font-semibold">UNCUT EXCERPT</span>
+          <h2 class="font-serif text-3xl sm:text-5xl text-[#f5f0eb] mt-2 tracking-tight">
+            Listen to the Vault Teaser
+          </h2>
+          <p class="text-sm text-[#a69fae] max-w-lg mx-auto mt-3 font-light">
+            Press play below to hear a 60-second excerpt synthesized directly from memo #01.
+          </p>
+        </div>
+
+        <!-- Audio Player Console Card -->
+        <div class="p-8 sm:p-12 rounded-2xl bg-[#181620]/90 border border-[#f2ca50]/25 shadow-2xl backdrop-blur-xl relative mb-16 overflow-hidden">
+          
+          <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-8">
+            <div class="flex items-center gap-4">
+              <!-- Interactive Play Button -->
+              <button id="memo-play-btn" type="button" class="w-14 h-14 rounded-full bg-[#f2ca50] text-[#14121a] flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all">
+                <span class="material-symbols-outlined text-[28px]">play_arrow</span>
+              </button>
+              <div>
+                <span class="text-[11px] uppercase tracking-[0.2em] text-[#e0b6ff] font-semibold">PRIVATE VOICE MEMO // 03:19 AM</span>
+                <h4 class="font-serif text-xl sm:text-2xl text-[#f5f0eb]">“WHAT WE ACTUALLY CRAVE” // UNCUT</h4>
+              </div>
+            </div>
+
+            <!-- Time & Status -->
+            <div class="flex items-center gap-3">
+              <span id="memo-time" class="font-mono text-xs text-[#a69fae]">03:19 / 14:02</span>
+              <div class="hidden sm:flex items-center gap-1 px-3 py-1 rounded bg-[#242230] border border-[#f2ca50]/20 text-[10px] text-[#f2ca50] tracking-widest uppercase">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#f2ca50] animate-pulse"></span>
+                <span>DIRECT FEED</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Waveform Visualizer & Track Bar -->
+          <div id="memo-track-container" class="w-full py-4 cursor-pointer group">
+            <div id="memo-visualizer" class="flex items-center justify-between gap-1 h-12 w-full px-2">
+              <span class="wave-bar w-1 bg-[#f2ca50] rounded-full h-3"></span>
+              <span class="wave-bar w-1 bg-[#f2ca50] rounded-full h-6"></span>
+              <span class="wave-bar w-1 bg-[#f2ca50] rounded-full h-10"></span>
+              <span class="wave-bar w-1 bg-[#f2ca50] rounded-full h-4"></span>
+              <span class="wave-bar w-1 bg-[#f2ca50] rounded-full h-8"></span>
+              <span class="wave-bar w-1 bg-[#f2ca50] rounded-full h-12"></span>
+              <span class="wave-bar w-1 bg-[#f2ca50] rounded-full h-7"></span>
+              <span class="wave-bar w-1 bg-[#f2ca50] rounded-full h-9"></span>
+              <span class="wave-bar w-1 bg-[#f2ca50] rounded-full h-5"></span>
+              <span class="wave-bar w-1 bg-[#f2ca50] rounded-full h-11"></span>
+              <span class="wave-bar w-1 bg-[#f2ca50] rounded-full h-6"></span>
+              <span class="wave-bar w-1 bg-[#f2ca50] rounded-full h-10"></span>
+              <span class="wave-bar w-1 bg-[#f2ca50] rounded-full h-4"></span>
+              <span class="wave-bar w-1 bg-[#f2ca50] rounded-full h-8"></span>
+              <span class="wave-bar w-1 bg-[#f2ca50] rounded-full h-12"></span>
+              <span class="wave-bar w-1 bg-[#f2ca50] rounded-full h-7"></span>
+              <span class="wave-bar w-1 bg-[#f2ca50] rounded-full h-5"></span>
+              <span class="wave-bar w-1 bg-[#f2ca50] rounded-full h-11"></span>
+              <span class="wave-bar w-1 bg-[#f2ca50] rounded-full h-8"></span>
+              <span class="wave-bar w-1 bg-[#f2ca50] rounded-full h-4"></span>
+              <span class="wave-bar w-1 bg-[#f2ca50] rounded-full h-9"></span>
+              <span class="wave-bar w-1 bg-[#f2ca50] rounded-full h-12"></span>
+              <span class="wave-bar w-1 bg-[#f2ca50] rounded-full h-6"></span>
+              <span class="wave-bar w-1 bg-[#f2ca50] rounded-full h-10"></span>
+            </div>
+            
+            <!-- Progress Line -->
+            <div class="w-full h-1.5 bg-[#242230] rounded-full overflow-hidden mt-3 relative">
+              <div id="memo-progress-bar" class="h-full bg-gradient-to-r from-[#d4af37] to-[#f2ca50] w-[24%] transition-all duration-300"></div>
+            </div>
+          </div>
+
+          <!-- Confidential Quote -->
+          <blockquote class="font-serif text-lg sm:text-xl text-[#f5f0eb] italic font-light leading-relaxed my-6">
+            “I listened to the midnight recordings twice in one sitting. It's like having an unfair cheat code to female psychology that no book or podcast has ever dared to say out loud.”
+          </blockquote>
+
+          <div class="flex items-center justify-between pt-4 border-t border-[#f2ca50]/15">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full bg-[#242230] border border-[#f2ca50]/30 flex items-center justify-center font-mono text-xs text-[#f2ca50]">A</div>
+              <div>
+                <p class="text-xs text-[#f5f0eb] font-semibold tracking-widest uppercase">Alexander V.</p>
+                <p class="text-[11px] text-[#a69fae]">Private Member · Zurich</p>
+              </div>
+            </div>
+            <span class="text-[11px] text-[#f2ca50] tracking-wider uppercase font-mono font-medium">VERIFIED POSSESSION</span>
+          </div>
+
+        </div>
+
+        <!-- Inner Circle Whispers -->
+        <div id="whispers-archive" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="p-6 rounded-xl glass-card flex flex-col justify-between">
+            <p class="text-sm text-[#f5f0eb] font-light italic mb-6 leading-relaxed">
+              “The distinction between what women say they want on public social media and what is revealed in these late-night voice notes is staggering. Worth tenfold the entry fee.”
+            </p>
+            <div class="flex items-center justify-between pt-4 border-t border-[#f2ca50]/10">
+              <span class="text-xs text-[#f2ca50] tracking-widest uppercase font-semibold">Marcus K. · Private Client</span>
+              <span class="text-xs font-mono text-[#a69fae]">LONDON</span>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-xl glass-card flex flex-col justify-between">
+            <p class="text-sm text-[#f5f0eb] font-light italic mb-6 leading-relaxed">
+              “Direct, uncomfortable, raw, and completely game-changing. It explains dynamics with high-caliber women that I spent years wondering about.”
+            </p>
+            <div class="flex items-center justify-between pt-4 border-t border-[#f2ca50]/10">
+              <span class="text-xs text-[#f2ca50] tracking-widest uppercase font-semibold">Julian R. · Founder</span>
+              <span class="text-xs font-mono text-[#a69fae]">NEW YORK</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 4: LUXURY PRICING & TOKEN CHECKOUT CARD -->
+    <section id="unveil-checkout" class="w-full bg-[#100f17] py-28 px-6 lg:px-12 relative flex flex-col items-center justify-center border-t border-[#f2ca50]/10">
+      <div class="w-full max-w-xl relative z-10">
+        
+        <div class="rounded-3xl bg-[#181620]/95 border border-[#f2ca50]/30 backdrop-blur-2xl p-8 sm:p-12 shadow-2xl flex flex-col items-center text-center">
+          
+          <span class="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#f2ca50] mb-3">
+            INVITATION ACCESS TOKEN
+          </span>
+          <h3 class="font-serif text-3xl sm:text-4xl text-[#f5f0eb] mb-2">
+            Unlock Secret to Dream
+          </h3>
+          <p class="text-xs sm:text-sm text-[#a69fae] max-w-sm mb-8 font-light leading-relaxed">
+            One-time confidential unlock. Instant delivery of your personal encryption key, direct Notion access, and master audio archive.
+          </p>
+
+          <!-- Price Display -->
+          <div class="flex items-baseline justify-center gap-4 mb-8">
+            <span class="text-xl text-[#a69fae]/60 line-through font-mono">$297</span>
+            <span class="font-serif text-5xl sm:text-6xl text-[#f2ca50] font-normal leading-none">$29</span>
+            <span class="text-[10px] font-semibold uppercase tracking-widest text-[#e0b6ff] self-center px-3 py-1 rounded-full bg-[#4c1d6b]/40 border border-[#e0b6ff]/30">
+              ONE-TIME ACCESS FEE
+            </span>
+          </div>
+
+          <!-- Included List -->
+          <div class="w-full flex flex-col gap-3.5 mb-10 text-left">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-[18px] text-[#f2ca50]">check</span>
+              <span class="text-xs sm:text-sm text-[#f5f0eb]">The Complete Unfiltered Female Psychology Folio (Digital Manuscript)</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-[18px] text-[#f2ca50]">check</span>
+              <span class="text-xs sm:text-sm text-[#f5f0eb]">9 Uncut Late-Night Voice Memos &amp; Behavioral Breakdowns</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-[18px] text-[#f2ca50]">check</span>
+              <span class="text-xs sm:text-sm text-[#f5f0eb]">The Masculine Magnetism &amp; Frame Control Protocol</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-[18px] text-[#f2ca50]">check</span>
+              <span class="text-xs sm:text-sm text-[#f5f0eb]">Lifetime Notion Workspace &amp; Future Vault Expansions</span>
+            </div>
+          </div>
+
+          <!-- Checkout CTA Button -->
+          <div class="w-full flex flex-col gap-4">
+            <button type="button" class="open-checkout-btn w-full py-4.5 px-6 rounded-xl btn-gold text-xs flex items-center justify-center gap-3 group">
+              <span>UNLOCK PRIVATE ACCESS NOW</span>
+              <span class="material-symbols-outlined text-[20px] group-hover:translate-x-1.5 transition-transform">lock_open</span>
+            </button>
+            <p class="text-[10px] font-mono tracking-widest text-[#a69fae] uppercase">
+              INSTANT ACCESS · DISPATCHED UNDER 30 SECONDS
+            </p>
+          </div>
+
+          <!-- Encryption & Security Guarantees -->
+          <div class="w-full pt-8 mt-8 flex flex-col items-center gap-4 border-t border-[#f2ca50]/15">
+            <div class="flex items-center justify-center gap-6 text-[#a69fae] text-xs">
+              <div class="flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px] text-[#f2ca50]">security</span>
+                <span class="tracking-wider uppercase">256-BIT SSL ENCRYPTION</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px] text-[#f2ca50]">visibility_off</span>
+                <span class="tracking-wider uppercase">DISCREET STATEMENT</span>
+              </div>
+            </div>
+            <p class="text-[11px] text-[#a69fae]/70 text-center">
+              Accepted: PayU Portal (UPI / Cards / NetBanking), Apple Pay, Credit Cards. Discreetly billed as “SECRET TO DREAM”.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 5: DISCREET FAQ -->
+    <section id="curated-faq" class="w-full py-24 px-6 lg:px-12 relative">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-16">
+          <span class="text-xs uppercase tracking-[0.3em] text-[#f2ca50] font-semibold">TRANSPARENCY</span>
+          <h2 class="font-serif text-3xl sm:text-5xl text-[#f5f0eb] mt-2">Discreet Inquiries</h2>
+        </div>
+
+        <div class="flex flex-col gap-4">
+          
+          <!-- FAQ 1 -->
+          <div class="faq-item rounded-xl bg-[#181620] border border-[#f2ca50]/15 overflow-hidden transition-all">
+            <button type="button" class="faq-trigger w-full p-6 text-left flex items-center justify-between gap-4">
+              <span class="font-serif text-base sm:text-lg text-[#f5f0eb]">How is this different from generic dating guides?</span>
+              <span class="material-symbols-outlined text-[#f2ca50] faq-icon transition-transform">expand_more</span>
+            </button>
+            <div class="faq-answer hidden px-6 pb-6 text-sm text-[#a69fae] font-light leading-relaxed border-t border-[#f2ca50]/10 pt-4">
+              Most guides are authored by men guessing or regurgitating cliché pickup tropes. This is the unvarnished truth directly from a high-status woman's intimate perspective—detailing the exact primal cues, unspoken tests, and dynamic tension that genuinely captivates women of exceptional caliber.
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item rounded-xl bg-[#181620] border border-[#f2ca50]/15 overflow-hidden transition-all">
+            <button type="button" class="faq-trigger w-full p-6 text-left flex items-center justify-between gap-4">
+              <span class="font-serif text-base sm:text-lg text-[#f5f0eb]">Will anyone know I unlocked this?</span>
+              <span class="material-symbols-outlined text-[#f2ca50] faq-icon transition-transform">expand_more</span>
+            </button>
+            <div class="faq-answer hidden px-6 pb-6 text-sm text-[#a69fae] font-light leading-relaxed border-t border-[#f2ca50]/10 pt-4">
+              Never. Your purchase and access remain 100% anonymous. The billing descriptor reflects a generic code (“SECRET TO DREAM”), your email is kept strictly confidential, and no public profile is created.
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item rounded-xl bg-[#181620] border border-[#f2ca50]/15 overflow-hidden transition-all">
+            <button type="button" class="faq-trigger w-full p-6 text-left flex items-center justify-between gap-4">
+              <span class="font-serif text-base sm:text-lg text-[#f5f0eb]">What format are the files in?</span>
+              <span class="material-symbols-outlined text-[#f2ca50] faq-icon transition-transform">expand_more</span>
+            </button>
+            <div class="faq-answer hidden px-6 pb-6 text-sm text-[#a69fae] font-light leading-relaxed border-t border-[#f2ca50]/10 pt-4">
+              You receive immediate access to the encrypted browser sanctum (`vault.html`), a duplicable Notion master workspace, 9 downloadable high-bitrate MP3 audio memos, and an encrypted PDF dossier optimized for mobile and desktop reading.
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item rounded-xl bg-[#181620] border border-[#f2ca50]/15 overflow-hidden transition-all">
+            <button type="button" class="faq-trigger w-full p-6 text-left flex items-center justify-between gap-4">
+              <span class="font-serif text-base sm:text-lg text-[#f5f0eb]">Why is it priced at $29 instead of $297?</span>
+              <span class="material-symbols-outlined text-[#f2ca50] faq-icon transition-transform">expand_more</span>
+            </button>
+            <div class="faq-answer hidden px-6 pb-6 text-sm text-[#a69fae] font-light leading-relaxed border-t border-[#f2ca50]/10 pt-4">
+              Access is intentionally accessible yet strictly capped at 300 private initial unlocks to curate an exclusive inner circle of discerning collectors. Once the final allocation is claimed, the vault closes.
+            </div>
+          </div>
+
+        </div>
+
+        <div class="mt-16 text-center">
+          <button type="button" class="open-checkout-btn inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-[#f2ca50] hover:text-white transition-colors">
+            <span>CLAIM ONE OF THE LAST 14 INVITATIONS</span>
+            <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="w-full bg-[#0c0b12] py-16 border-t border-[#f2ca50]/10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col gap-12">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+        <div class="flex flex-col gap-2">
+          <div class="flex items-center gap-3">
+            <span class="font-serif text-2xl tracking-wide text-[#f2ca50]">SECRET TO DREAM</span>
+            <span class="text-xs uppercase tracking-widest text-[#a69fae]">Volume XI</span>
+          </div>
+          <p class="text-xs text-[#a69fae] max-w-sm font-light">
+            Confidential digital manuscripts, psychological protocols, and curated audio intimacies for discerning collectors.
+          </p>
+        </div>
+        <div class="flex flex-wrap items-center gap-8 text-xs uppercase tracking-widest text-[#a69fae]">
+          <a href="#unveil-checkout" class="open-checkout-btn hover:text-[#f2ca50] transition-colors">Encrypted Access</a>
+          <a href="#curated-faq" class="hover:text-[#f2ca50] transition-colors">Sanctum Terms</a>
+          <button type="button" class="open-login-btn hover:text-[#f2ca50] transition-colors">Member Login</button>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pt-8 border-t border-[#f2ca50]/10 text-xs text-[#a69fae]/70">
+        <div class="flex items-center gap-2.5">
+          <span class="material-symbols-outlined text-[18px] text-[#f2ca50]">lock</span>
+          <span>256-Bit SSL Instant Verification · PayU Gateway · Cards &amp; Apple Pay</span>
+        </div>
+        <div class="tracking-widest uppercase">
+          &copy; 2025 SECRET TO DREAM ATELIER. ALL RIGHTS HELD IN RESERVE.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL: CHECKOUT TERMINAL WITH PAYU & DEMO SUPPORT -->
+  <div id="checkout-modal" class="modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+    <div class="w-full max-w-md bg-[#181620] border border-[#f2ca50]/40 rounded-2xl shadow-2xl p-6 sm:p-8 relative">
+      <button type="button" class="close-checkout-btn absolute top-5 right-5 text-[#a69fae] hover:text-white transition-colors">
+        <span class="material-symbols-outlined text-[24px]">close</span>
+      </button>
+
+      <div class="text-center mb-6">
+        <div class="inline-block px-2.5 py-0.5 rounded bg-[#4c1d6b]/50 border border-[#e0b6ff]/30 text-[10px] font-mono text-[#e0b6ff] uppercase tracking-widest mb-1.5" id="demo-mode-indicator">
+          DEMO MODE: ACTIVE (Instant Checkout)
+        </div>
+        <h4 class="font-serif text-2xl text-[#f5f0eb] mt-1">Unlock Secret to Dream</h4>
+        <p class="text-xs text-[#a69fae] mt-1">One-time payment of $29.00 · Instant delivery</p>
+      </div>
+
+      <!-- Simulated / Gateway Status Area -->
+      <div id="checkout-status" class="hidden"></div>
+
+      <!-- Checkout Form Fields -->
+      <div id="checkout-fields" class="flex flex-col gap-4">
+        
+        <!-- PayU Primary Action Button -->
+        <button type="button" id="pay-payu-btn" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-[#a3cf08] to-[#80a500] text-[#14121a] font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2.5 shadow-lg hover:brightness-105 transition-all">
+          <span class="material-symbols-outlined text-[20px]">account_balance</span>
+          <span>PAY VIA PAYU (UPI / CARDS / NETBANKING)</span>
+        </button>
+
+        <!-- Quick Pay Options -->
+        <div class="grid grid-cols-2 gap-3">
+          <button type="button" id="pay-apple-btn" class="py-3 px-4 rounded-lg bg-black text-white border border-white/20 font-semibold text-xs flex items-center justify-center gap-2 hover:bg-neutral-900 transition-colors">
+            <span class="material-symbols-outlined text-[18px]">phone_iphone</span>
+            <span>Apple Pay</span>
+          </button>
+          <button type="button" onclick="document.getElementById('checkout-form').dispatchEvent(new Event('submit'))" class="py-3 px-4 rounded-lg bg-[#242230] text-white border border-[#f2ca50]/30 font-semibold text-xs flex items-center justify-center gap-2 hover:bg-[#312e40] transition-colors">
+            <span class="material-symbols-outlined text-[18px] text-[#f2ca50]">credit_card</span>
+            <span>Credit Card</span>
+          </button>
+        </div>
+
+        <div class="relative flex items-center justify-center my-1">
+          <div class="border-t border-[#f2ca50]/20 w-full"></div>
+          <span class="bg-[#181620] px-3 text-[10px] text-[#a69fae] uppercase tracking-widest font-mono">CUSTOMER CREDENTIALS</span>
+        </div>
+
+        <form id="checkout-form" class="flex flex-col gap-3">
+          <div>
+            <label class="block text-[10px] uppercase tracking-widest text-[#a69fae] mb-1">Full Name</label>
+            <input type="text" id="checkout-name" placeholder="Alexander V." class="w-full px-3.5 py-2.5 rounded-lg bg-[#14121a] border border-[#f2ca50]/20 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-[#f2ca50]" required>
+          </div>
+          <div>
+            <label class="block text-[10px] uppercase tracking-widest text-[#a69fae] mb-1">Confidential Email (Token Delivery)</label>
+            <input type="email" id="checkout-email" placeholder="collector@confidential.net" class="w-full px-3.5 py-2.5 rounded-lg bg-[#14121a] border border-[#f2ca50]/20 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-[#f2ca50]" required>
+          </div>
+
+          <button type="submit" class="w-full mt-2 py-3.5 rounded-lg btn-gold text-xs tracking-widest flex items-center justify-center gap-2">
+            <span class="material-symbols-outlined text-[18px]">lock</span>
+            <span>AUTHORIZE &amp; UNLOCK ($29)</span>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL: SANCTUM TOKEN LOGIN -->
+  <div id="login-modal" class="modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+    <div class="w-full max-w-md bg-[#181620] border border-[#f2ca50]/40 rounded-2xl shadow-2xl p-6 sm:p-8 relative">
+      <button type="button" class="close-login-btn absolute top-5 right-5 text-[#a69fae] hover:text-white transition-colors">
+        <span class="material-symbols-outlined text-[24px]">close</span>
+      </button>
+
+      <div class="text-center mb-6">
+        <div class="w-12 h-12 rounded-full bg-[#242230] border border-[#f2ca50]/30 mx-auto flex items-center justify-center text-[#f2ca50] mb-3">
+          <span class="material-symbols-outlined text-[24px]">key</span>
+        </div>
+        <span class="text-[10px] font-semibold text-[#f2ca50] tracking-[0.25em] uppercase">TOKEN VALIDATION</span>
+        <h4 class="font-serif text-2xl text-[#f5f0eb] mt-1">Enter Vault Key</h4>
+        <p class="text-xs text-[#a69fae] mt-1">Enter your encrypted token or use quick demo access</p>
+      </div>
+
+      <form id="login-form" class="flex flex-col gap-4">
+        <div>
+          <label class="block text-[10px] uppercase tracking-widest text-[#a69fae] mb-1">Access Token Key</label>
+          <input type="text" id="login-token-input" placeholder="STD-VLT-XXXX" class="w-full px-4 py-3 rounded-lg bg-[#14121a] border border-[#f2ca50]/30 text-sm text-center font-mono text-[#f2ca50] uppercase placeholder-gray-600 focus:outline-none focus:border-[#f2ca50]" required>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 rounded-lg btn-gold text-xs tracking-widest flex items-center justify-center gap-2">
+          <span>DECRYPT &amp; ENTER SANCTUM</span>
+          <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+        </button>
+
+        <div class="text-center pt-2">
+          <button type="button" onclick="document.getElementById('login-token-input').value = 'DEMO1130'; showToast('Demo key filled: DEMO1130', 'info');" class="text-xs text-[#e0b6ff] hover:underline font-mono">
+            Or Click to Use Instant Demo Key (DEMO1130)
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>

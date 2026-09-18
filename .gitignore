@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+.vercel/
+
+# Environment Variables & Secrets (All variants ignored)
+.env
+.env*
+*.env
+
+# Antigravity & Agent MCP configurations (local only - protects Stitch API Key)
+.agents/
+mcp_config.json
+scratch/
+scratch_notion/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Operating system files & logs
+.DS_Store
+Thumbs.db
+*.log

@@ -1,0 +1,230 @@
+/* Custom CSS for Nocturne 1130 Archive & Cipher Vault */
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..24,300..600,0..1,0');
+
+:root {
+  --bg-color: #0e0d14;
+  --surface: #14121a;
+  --surface-low: #1a1823;
+  --surface-high: #242230;
+  --surface-highest: #312e40;
+  --primary-gold: #f2ca50;
+  --primary-gold-dim: #d4af37;
+  --primary-gold-light: #fff0e0;
+  --secondary-lilac: #e0b6ff;
+  --secondary-container: #4c1d6b;
+  --text-main: #f5f0eb;
+  --text-muted: #a69fae;
+  --text-dim: #6e6777;
+  --border-subtle: rgba(242, 202, 80, 0.15);
+  --border-gold: rgba(212, 175, 55, 0.35);
+  --glow-gold: rgba(242, 202, 80, 0.18);
+  --glow-lilac: rgba(224, 182, 255, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface-highest);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-gold-dim);
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(20, 18, 26, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+}
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(26, 24, 35, 0.85) 0%, rgba(20, 18, 26, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  border-color: var(--border-gold);
+  box-shadow: 0 12px 36px -10px var(--glow-gold);
+}
+
+/* Gold Gradient Shimmer */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #fff3d6 0%, #f2ca50 50%, #cca028 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.lilac-gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #e0b6ff 60%, #ab75e0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Luxury Button Styling */
+.btn-gold {
+  background: linear-gradient(135deg, #f2ca50 0%, #d4af37 100%);
+  color: #1a1400;
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.25);
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(242, 202, 80, 0.4);
+  filter: brightness(1.05);
+}
+
+.btn-gold:active {
+  transform: translateY(0);
+}
+
+.btn-outline-subtle {
+  background: rgba(36, 34, 48, 0.6);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-main);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.btn-outline-subtle:hover {
+  background: rgba(49, 46, 64, 0.9);
+  border-color: var(--border-gold);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* Waveform Visualizer Animation */
+.wave-bar {
+  transform-origin: bottom;
+  animation: waveIdle 2s ease-in-out infinite;
+}
+
+.playing .wave-bar:nth-child(2n) {
+  animation: waveActive 0.8s ease-in-out infinite alternate;
+}
+.playing .wave-bar:nth-child(2n+1) {
+  animation: waveActive 1.2s ease-in-out infinite alternate;
+}
+.playing .wave-bar:nth-child(3n) {
+  animation: waveActive 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes waveIdle {
+  0%, 100% { height: 6px; }
+  50% { height: 16px; }
+}
+
+@keyframes waveActive {
+  0% { height: 6px; }
+  100% { height: 38px; }
+}
+
+/* Subtle ambient pulse glow */
+@keyframes ambientGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.08); }
+}
+
+.glow-ambient {
+  animation: ambientGlow 8s ease-in-out infinite;
+}
+
+/* Redacted text effect */
+.redacted-bar {
+  background: rgba(224, 182, 255, 0.12);
+  filter: blur(3px);
+  user-select: none;
+  transition: all 0.3s ease;
+}
+.redacted-bar:hover {
+  filter: blur(1.5px);
+  background: rgba(224, 182, 255, 0.22);
+}
+
+/* Modal styling */
+.modal-overlay {
+  background: rgba(10, 9, 14, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Audio Player Progress */
+input[type=range].audio-slider {
+  -webkit-appearance: none;
+  background: transparent;
+}
+input[type=range].audio-slider::-webkit-slider-runnable-track {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+}
+input[type=range].audio-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  background: var(--primary-gold);
+  margin-top: -5px;
+  cursor: pointer;
+  box-shadow: 0 0 10px var(--primary-gold);
+}
+
+/* Terminal Cipher Mode Theme */
+body.cipher-mode {
+  --bg-color: #0b0c10;
+  --surface: #12141a;
+  --surface-low: #181b24;
+  --surface-high: #202430;
+  --surface-highest: #2b3142;
+  --primary-gold: #4edea3;
+  --primary-gold-dim: #10b981;
+  --primary-gold-light: #d1fae5;
+  --secondary-lilac: #ffb95f;
+  --text-main: #e5e1e4;
+  --text-muted: #86948a;
+  --border-subtle: rgba(78, 222, 163, 0.2);
+  --border-gold: rgba(78, 222, 163, 0.45);
+  --glow-gold: rgba(78, 222, 163, 0.2);
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+body.cipher-mode h1,
+body.cipher-mode h2,
+body.cipher-mode h3,
+body.cipher-mode h4 {
+  font-family: 'Space Grotesk', sans-serif !important;
+}
+body.cipher-mode .cipher-font {
+  font-family: 'JetBrains Mono', monospace !important;
+}
