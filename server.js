@@ -79,13 +79,16 @@ async function requestHandler(req, res) {
 
   // 4. Static Files
   if (pathname === '/') pathname = '/index.html';
-  const cleanPath = pathname.replace(/^\/+/, '');
+  const rawPath = pathname.replace(/^\/+/, '');
+  const cleanPath = !path.extname(rawPath) ? rawPath + '.html' : rawPath;
 
   const candidatePaths = [
     path.join(__dirname, cleanPath),
     path.join(process.cwd(), cleanPath),
     path.resolve(__dirname, cleanPath),
-    path.resolve(process.cwd(), cleanPath)
+    path.resolve(process.cwd(), cleanPath),
+    path.join(__dirname, rawPath),
+    path.join(process.cwd(), rawPath)
   ];
 
   let filePath = null;
